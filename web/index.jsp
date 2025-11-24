@@ -79,7 +79,7 @@
                     </td>
 
                     <td style="text-align: center;"> 
-                        <a href="deletarTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
+                        <a href="excluirTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
                             style="text-decoration: none; color: inherit;">
                             <i class="fa-solid fa-trash"></i> 
                         </a> 
