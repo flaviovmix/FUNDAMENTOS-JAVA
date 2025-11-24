@@ -1,3 +1,4 @@
+<%@page import="app.config.PoolConexoes"%>
 <%@ page import="java.sql.*" %> 
  
 <!DOCTYPE html> 
@@ -56,18 +57,16 @@
             </tr> 
              
         <% 
+        PoolConexoes pool = new PoolConexoes();
+        
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-
+        
         try {
-
-            javax.naming.Context ic = new javax.naming.InitialContext();
-            javax.sql.DataSource ds = (javax.sql.DataSource) ic.lookup("java:comp/env/jdbc/PoolConexoes");
-
-            con = ds.getConnection(); 
-
             String sql = "SELECT * FROM tarefas";
+            
+            con = pool.getConexao();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
                  
@@ -100,7 +99,7 @@
                 } finally { 
                     if (rs != null) rs.close(); 
                     if (ps != null) ps.close(); 
-                    if (con != null) con.close(); 
+                    pool.closeConexao();
                 } 
             %> 
         </table> 
