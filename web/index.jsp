@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="app.tarefas.TarefasBean"%>
+<%@page import="app.tarefas.TarefasDAO"%>
 <%@page import="app.config.PoolConexoes"%>
 <%@ page import="java.sql.*" %> 
  
@@ -57,51 +60,33 @@
             </tr> 
              
         <% 
-        PoolConexoes pool = new PoolConexoes();
-        
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        
-        try {
-            String sql = "SELECT * FROM tarefas";
-            
-            con = pool.getConexao();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-                 
-            while (rs.next()) { %> 
-            <tr style="border-bottom: 1px solid black;"> 
-                <td><%= rs.getInt("id_tarefa") %></td> 
-                <td><%= rs.getString("titulo") %></td> 
-                <td><%= rs.getString("prioridade") %></td> 
-                <td><%= rs.getString("responsavel") %></td> 
-                <td><%= rs.getInt("status") %></td> 
-                
-                <td style="text-align: center;"> 
-                    <a href="editarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>" 
-                        style="text-decoration: none; color: inherit;">
-                        <i class="fa-solid fa-pen"></i> 
-                    </a> 
-                </td>
-                
-                <td style="text-align: center;"> 
-                    <a href="deletarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>"
-                        style="text-decoration: none; color: inherit;">
-                        <i class="fa-solid fa-trash"></i> 
-                    </a> 
-                </td>
-                 
-            </tr> 
-            <% }  
-                } catch (Exception e) { 
-                    out.println("Erro: " + e.getMessage()); 
-                } finally { 
-                    if (rs != null) rs.close(); 
-                    if (ps != null) ps.close(); 
-                    pool.closeConexao();
-                } 
-            %> 
+            TarefasDAO dao = new TarefasDAO();
+            List<TarefasBean> tarefas = dao.listarTarefas();
+
+            for (TarefasBean tarefa : tarefas) { %>
+                <tr style="border-bottom: 1px solid black;"> 
+                    <td><%= tarefa.getId_tarefa() %></td>
+                    <td><%= tarefa.getTitulo() %></td>
+                    <td><%= tarefa.getPrioridade() %></td>
+                    <td><%= tarefa.getResponsavel() %></td>
+                    <td><%= tarefa.getStatus() %></td> 
+
+                    <td style="text-align: center;"> 
+                        <a href="editarTarefa.jsp?id_tarefa=<%= tarefa.getId_tarefa() %>" 
+                            style="text-decoration: none; color: inherit;">
+                            <i class="fa-solid fa-pen"></i> 
+                        </a> 
+                    </td>
+
+                    <td style="text-align: center;"> 
+                        <a href="deletarTarefa.jsp?id_tarefa=<%= tarefa.getId_tarefa() %>"
+                            style="text-decoration: none; color: inherit;">
+                            <i class="fa-solid fa-trash"></i> 
+                        </a> 
+                    </td>
+
+                </tr>                 
+            <% } %>
         </table> 
     </body> 
 </html>
