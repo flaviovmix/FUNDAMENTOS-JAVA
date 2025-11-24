@@ -1,0 +1,27 @@
+# Ignorar vídeos
+*.mp4
+*.mkv
+
+/build/
+# nbproject configs
+nbproject/private/
+
+# compilados
+build/
+dist/
+*.class
+
+# IDEs
+*.iml
+.idea/
+.vscode/
+
+# logs e temporários
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+#videos
+web/assets/img/JOGO 1.mp4
+web/assets/img/Carros 3.mkv
