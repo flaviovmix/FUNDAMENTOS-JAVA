@@ -56,21 +56,20 @@
             </tr> 
              
         <% 
-            String url = "jdbc:postgresql://localhost:5432/DB_GENERICO"; 
-            String user = "postgres"; 
-            String pass = "masterkey"; 
- 
-            Connection con = null; 
-            PreparedStatement ps = null; 
-            ResultSet rs = null; 
- 
-            try { 
-                Class.forName("org.postgresql.Driver"); 
-                con = DriverManager.getConnection(url, user, pass); 
- 
-                String sql = "SELECT * FROM tarefas"; 
-                ps = con.prepareStatement(sql); 
-                rs = ps.executeQuery(); 
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            javax.naming.Context ic = new javax.naming.InitialContext();
+            javax.sql.DataSource ds = (javax.sql.DataSource) ic.lookup("java:comp/env/jdbc/PoolConexoes");
+
+            con = ds.getConnection(); 
+
+            String sql = "SELECT * FROM tarefas";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
                  
             while (rs.next()) { %> 
             <tr style="border-bottom: 1px solid black;"> 
@@ -81,15 +80,18 @@
                 <td><%= rs.getInt("status") %></td> 
                 
                 <td style="text-align: center;"> 
-                    <a href="editarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>" style="text-decoration: none; color: inherit;"> 
+                    <a href="editarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>" 
+                        style="text-decoration: none; color: inherit;">
                         <i class="fa-solid fa-pen"></i> 
                     </a> 
-                </td> 
+                </td>
+                
                 <td style="text-align: center;"> 
-                    <a href="deletarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>" style="text-decoration: none; color: inherit;"> 
+                    <a href="deletarTarefa.jsp?id_tarefa=<%= rs.getInt("id_tarefa") %>"
+                        style="text-decoration: none; color: inherit;">
                         <i class="fa-solid fa-trash"></i> 
                     </a> 
-                </td> 
+                </td>
                  
             </tr> 
             <% }  

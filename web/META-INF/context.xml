@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/FUNDAMENTOS-JAVA"/>
+<Context path="/FUNDAMENTOS-JAVA" useHttpOnly="true">
+    <Resource
+        name="jdbc/PoolConexoes"
+        auth="Container"
+        type="javax.sql.DataSource"
+        factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+        
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost:5432/DB_GENERICO"
+        username="postgres"
+        password="masterkey"
+
+        maxTotal="100"
+        maxIdle="10"
+        maxWaitMillis="5000"
+
+        validationQuery="SELECT 1"
+        testOnBorrow="true"
+        testWhileIdle="true"
+        timeBetweenEvictionRunsMillis="30000"
+        minEvictableIdleTimeMillis="600000"
+        
+        removeAbandonedOnBorrow="true"
+        removeAbandonedTimeout="60"
+    />
+</Context>
