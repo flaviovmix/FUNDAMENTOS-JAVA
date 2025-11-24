@@ -27,7 +27,7 @@
             } 
             table { 
                 border-collapse: collapse; 
-                width: 900px; 
+                width: 1200px; 
                 margin: 0 auto;  
             } 
  
@@ -56,30 +56,30 @@
                 <th>Responsável</th> 
                 <th>Status</th> 
                 <th>Editar</th> 
-                <th>Excçuir</th> 
+                <th>Excluir</th> 
             </tr> 
              
         <% 
             TarefasDAO dao = new TarefasDAO();
             List<TarefasBean> tarefas = dao.listarTarefas();
 
-            for (TarefasBean tarefa : tarefas) { %>
+            for (TarefasBean bean : tarefas) { %>
                 <tr style="border-bottom: 1px solid black;"> 
-                    <td><%= tarefa.getId_tarefa() %></td>
-                    <td><%= tarefa.getTitulo() %></td>
-                    <td><%= tarefa.getPrioridade() %></td>
-                    <td><%= tarefa.getResponsavel() %></td>
-                    <td><%= tarefa.getStatus() %></td> 
+                    <td><%= bean.getId_tarefa() %></td>
+                    <td><%= bean.getTitulo() %></td>
+                    <td><%= bean.getPrioridadeFormatada() %></td>
+                    <td><%= bean.getResponsavel() %></td>
+                    <td><%= bean.getStatusValor() %></td> 
 
                     <td style="text-align: center;"> 
-                        <a href="editarTarefa.jsp?id_tarefa=<%= tarefa.getId_tarefa() %>" 
+                        <a href="editarTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>" 
                             style="text-decoration: none; color: inherit;">
                             <i class="fa-solid fa-pen"></i> 
                         </a> 
                     </td>
 
                     <td style="text-align: center;"> 
-                        <a href="deletarTarefa.jsp?id_tarefa=<%= tarefa.getId_tarefa() %>"
+                        <a href="deletarTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
                             style="text-decoration: none; color: inherit;">
                             <i class="fa-solid fa-trash"></i> 
                         </a> 

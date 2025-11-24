@@ -27,6 +27,21 @@ public class TarefasBean {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+    
+    public String getPrioridadeFormatada() {
+        
+        switch (prioridade) {
+            case "baixa":
+                return "Baixa";
+            case "media":
+                return "Média";
+            case "alta":
+                return "Alta";
+            default:
+                return prioridade;
+        }
+        
+    }
 
     public String getPrioridade() {
         return prioridade;
@@ -58,6 +73,23 @@ public class TarefasBean {
 
     public void setData_conclusao(Date data_conclusao) {
         this.data_conclusao = data_conclusao;
+    }
+    
+    public String getStatusValor() {
+        
+        switch (status) {
+            case 0:
+                return "rascunho";
+            case 1:
+                return "pendente";
+            case 2:
+                return "concluida";
+            case 3:
+                return "deletar";
+            default:
+                return "";
+        }
+        
     }
 
     public Integer getStatus() {
