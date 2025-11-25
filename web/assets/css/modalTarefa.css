@@ -140,7 +140,6 @@
 .btn-save-custom {
     width: 50%;
     padding: 12px;
-    background: linear-gradient(135deg, #4CAF50, #43A047);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -159,6 +158,15 @@
     transform: translateY(-2px);
     box-shadow: 0px 5px 14px rgba(0,0,0,0.25);
 }
+
+.btn-novaTarefa {
+    background: linear-gradient(135deg, #4CAF50, #43A047);
+}
+
+.btn-editarTarefa {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
 
 /* === COLUNAS LADO A LADO === */
 .columns-2-custom {

@@ -47,7 +47,7 @@ public class TarefasDAO {
 
             StringBuilder sql = new StringBuilder();
 
-            sql.append("SELECT * FROM tarefas");  
+            sql.append("SELECT * FROM tarefas ORDER BY id_tarefa");  
 
             try (PreparedStatement ps = con.getConexao().prepareStatement(sql.toString())) {
 
@@ -76,6 +76,67 @@ public class TarefasDAO {
 
             return lista;
 
+        }
+
+        public TarefasBean buscarPorId(int id) {
+
+            String sql = "SELECT * FROM tarefas WHERE id_tarefa = ?";
+
+            try (PreparedStatement ps = con.getConexao().prepareStatement(sql)) {
+
+                ps.setInt(1, id);
+
+                try (ResultSet rs = ps.executeQuery()) {
+
+                    if (rs.next()) {
+                        TarefasBean b = new TarefasBean();
+
+                        b.setId_tarefa(rs.getInt("id_tarefa"));
+                        b.setTitulo(rs.getString("titulo"));
+                        b.setPrioridade(rs.getString("prioridade"));
+                        b.setResponsavel(rs.getString("responsavel"));
+                        b.setData_criacao(rs.getDate("data_criacao"));
+                        b.setData_conclusao(rs.getDate("data_conclusao"));
+                        b.setStatus(rs.getInt("status"));
+                        b.setDescricao(rs.getString("descricao"));
+
+                        return b;
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        public void editarTarefa(TarefasBean bean) {
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("UPDATE tarefas SET ")
+               .append("titulo = ?, ")
+               .append("descricao = ?, ")
+               .append("status = ?, ")
+               .append("prioridade = ?, ")
+               .append("responsavel = ?, ")
+               .append("data_conclusao = ? ")
+               .append("WHERE id_tarefa = ?");
+
+
+            try (PreparedStatement ps = con.getConexao().prepareStatement(sql.toString())) {
+                ps.setString(1, bean.getTitulo());
+                ps.setString(2, bean.getDescricao());
+                ps.setInt(3, bean.getStatus());
+                ps.setString(4, bean.getPrioridade());
+                ps.setString(5, bean.getResponsavel());
+                ps.setDate(6, bean.getData_conclusao());
+                ps.setInt(7, bean.getId_tarefa());
+
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         public void excluirTarefa(Integer id) {

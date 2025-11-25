@@ -1,3 +1,4 @@
+
 <%@page import="java.util.List"%>
 <%@page import="app.tarefas.TarefasBean"%>
 <%@page import="app.tarefas.TarefasDAO"%>
@@ -19,9 +20,10 @@
  
         <header>
             <div class="topo-sistema">
-            <button type="button" class="btn-abrir-Tarefas" onclick="openModalTarefas()">
+            <button type="button" class="btn-abrir-Tarefas" onclick="novaTarefa()">
                 Nova Tarefa
             </button>
+
             <h2>FUNDAMENTOS JAVA</h2>
             </div>
         </header>
@@ -50,10 +52,11 @@
                     <td><%= bean.getStatusValor() %></td> 
 
                     <td style="text-align: center;"> 
-                        <a href="editarTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>" 
-                            class="link-editar">
-                            <i class="fa-solid fa-pen"></i> 
-                        </a> 
+                        <a href="#"
+                           class="link-editar"
+                           onclick="editarTarefa(<%= bean.getId_tarefa() %>)">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
                     </td>
 
                     <td style="text-align: center;"> 
@@ -64,14 +67,15 @@
                     </td>
 
                 </tr>                 
-            <% } %>
+            <% } 
+        %>
         </table> 
         
         <div class='overlay-custom' id='modalTarefas' style='display:none;'>
             <div class='box-modal-custom'>
 
                 <button type="button" class="btn-close-custom" onclick="closeModalTarefas()">×</button>
-                <h2>Nova Tarefa</h2>
+                <h2 id="tituloModal">Nova Tarefa</h2>
 
                 <form action="salvarTarefa.jsp" method="post" class="form-tarefa-custom">
 
@@ -123,9 +127,10 @@
                             <label class="label-custom" for="status">Status</label>
                             <select id="status" name="status" required>
                                 <option value="">Selecione</option>
-                                <option value="0">Pendente</option>
-                                <option value="1">Concluída</option>
-                                <option value="2">Rascunho</option>
+                                <option value="0">Rascunho</option>
+                                <option value="1">Pendente</option>
+                                <option value="2">Concluida</option>
+                                <option value="3">Deletar</option>
                             </select>
                         </div>
 
@@ -136,13 +141,13 @@
                         <textarea id="descricao" name="descricao" rows="4"></textarea>
                     </div>
 
-                    <button type="submit" class="btn-save-custom">Salvar Tarefa</button>
+                    <button type="submit" id="botaoConfirmacao" class="btn-save-custom">Salvar Tarefa</button>
 
                 </form>
 
             </div>
         </div>
         
-        <script src="./assets/js/scripts.js"></script>
+        <script src="./assets/js/modalTarefas.js"></script>
     </body> 
 </html>
