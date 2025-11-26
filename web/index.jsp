@@ -23,7 +23,10 @@
             <button type="button" class="btn-abrir-Tarefas" onclick="novaTarefa()">
                 Nova Tarefa
             </button>
-
+            <button type="button" class="btn-exportar-json" onclick="window.location.href='exportar-json'">
+                Exportar JSON
+            </button>
+                
             <h2>FUNDAMENTOS JAVA</h2>
             </div>
         </header>
@@ -61,7 +64,7 @@
                         <div class="item-title"> <samp class="responsavel"> Responsável:</samp> <%= bean.getResponsavel() %> </div>
                         <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
                         <div class="item-sub">
-                            <i class="fa-solid fa-circle"></i>Status: <%= bean.getStatusValor() %> | 
+                            <samp class="status"><i class="fa-solid fa-circle"></i>Status:</samp> <%= bean.getStatusValor() %> | 
                             <i class="fa-solid fa-calendar-days"></i>18 nov. 2025
                         </div>
 

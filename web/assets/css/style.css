@@ -27,7 +27,7 @@ header {
 
     display: flex;               /* FLEX */
     flex-direction: row;         /* Alinha lado a lado */
-    justify-content: space-between;  /* Título à esquerda / Botão à direita */
+    gap: 10px;
     align-items: center;
 }
 
@@ -48,7 +48,24 @@ header {
     font-weight: 600;
     cursor: pointer;
 
-    display: flex;       /* ícone + texto sempre alinhados */
+    display: flex;       
+    align-items: center;
+    gap: 8px;
+
+    transition: .2s ease;
+}
+
+.btn-exportar-json {
+    padding: 10px 18px;
+    background: #FFB784;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    display: flex;       
     align-items: center;
     gap: 8px;
 
@@ -419,6 +436,10 @@ header {
     .prioridade {
         display: none !important;
     }
+    .status {
+        display: none !important;
+    }    
+    
 
     .responsavel {
         display: none !important;
