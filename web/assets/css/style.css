@@ -103,3 +103,338 @@ th {
 .link-editar:hover {
     color: blue;
 }
+
+   /* ====== RESET ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #ffffff;
+    color: #111;
+    padding-bottom: 90px; /* espaço para bottom-nav */
+}
+
+/* ====== CABEÇALHO ====== */
+header {
+    padding: 18px 20px;
+    font-size: 23px;
+    font-weight: 700;
+    color: #000;
+    position: relative;
+    background: #fff;
+}
+
+.top-icons {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    color: #222;
+}
+
+.top-icons i {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.top-icons i:active {
+    transform: scale(0.95);
+}
+
+/* ====== TABS ====== */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 8px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: #777;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+
+.tab.active {
+    color: #000;
+    border-bottom: 3px solid #f27800;
+}
+
+/* ====== TÍTULO DA SEÇÃO ====== */
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 18px 20px 10px;
+    color: #111;
+}
+
+.section-title small {
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+    color: #666;
+    font-size: 14px;
+}
+
+/* ====== ITENS ====== */
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 16px 20px;
+    border-bottom: 6px solid #eee;
+    position: relative;
+}
+
+.item:hover {
+    background-color: #eee;
+}
+
+.item-sub {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.item-title, .item-titulo {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.item-titulo {
+    font-size: 20px;
+}
+
+.item-value-pos {
+    color: #008f3b;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.item-value-neg {
+    color: #c00000;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.arrow {
+    position: absolute;
+    padding: 11px 18px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 25px;
+    border-radius: 50%;
+    background-color: rgb(212, 212, 212);
+}
+
+/* ====== BOTTOM NAV ====== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #d0d0d0;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 6px;
+    z-index: 10;
+}
+
+.bottom-nav div {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.bottom-nav i {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.bottom-active {
+    color: #0023a0 !important;
+    font-weight: 600;
+}
+
+.baixa {
+    position: absolute;
+    background-color: #A8E6A1;
+    padding: 2px 15px;
+    font-size: 12px;
+    border-radius: 15px;
+    color: black;
+    margin: 1px 10px;
+}
+
+.media {
+    position: absolute;
+    background-color: #FFF2A1;
+    padding: 2px 15px;
+    font-size: 12px;
+    border-radius: 15px;
+    color: black;
+    margin: 1px 10px;
+}
+.alta {
+    position: absolute;
+    background-color: #F4A7A7;
+    padding: 2px 15px;
+    font-size: 12px;
+    border-radius: 15px;
+    color: black;
+    margin: 1px 10px;
+}
+
+.titulos-desktop {
+    display: none;
+}
+/* ====== DESKTOP (a partir de 900px) ====== */
+.tarefa-individual {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.tarefa-individual a {
+    flex: 1;
+    text-decoration: none;
+}
+
+.tarefa-individual i.fa-trash {
+    font-size: 20px;
+    color: #c00000;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.tarefa-individual i.fa-trash:hover {
+    opacity: 0.8;
+}
+
+
+
+.tarefa-individual i.fa-trash:hover {
+    color: #a30000;
+}
+
+.tarefa-individual i.fa-trash:hover:not(.disabled) {
+    background: transparent;
+}
+
+
+.tarefa-individual:hover i.fa-trash:hover {
+    /* nada aqui */
+}
+
+
+.tarefa-individual:hover i.fa-trash:hover {
+    /* nada */
+}
+
+.tarefa-individual:has(i.fa-trash:hover) {
+    background-color: #eee; /* amarelo pastel */
+}
+
+@media (min-width: 900px) {
+
+    body {
+        padding-bottom: 0;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .tabs {
+        max-width: 1100px;
+        margin: 10px auto;
+    }
+
+    /* Cada item vira uma linha */
+    .item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        gap: 0;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    /* Remove estilo de card */
+    .item + .item {
+        border-top: none;
+    }
+
+    /* Colunas em formato de tabela */
+    .item-titulo {
+        flex: 2;
+        margin-bottom: 0;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .item-value-pos,
+    .item-value-neg {
+        flex: 1;
+        font-size: 15px;
+    }
+
+    .item-title {
+        flex: 1;
+        margin-bottom: 0;
+        font-size: 15px;
+    }
+
+    .item-sub {
+        flex: 1.5;
+        justify-content: flex-start;
+        font-size: 14px;
+    }
+
+    /* Setinha no final da linha */
+    .arrow {
+        display: none !important;
+    }
+
+    .prioridade {
+        display: none !important;
+    }
+
+    .responsavel {
+        display: none !important;
+    }
+
+    .arrow i {
+        color: #444;
+    }
+
+    .titulos-desktop {
+        display: flex;
+    }
+
+    /* Bottom nav escondido no desktop */
+    .bottom-nav {
+        display: none;
+    }
+
+}

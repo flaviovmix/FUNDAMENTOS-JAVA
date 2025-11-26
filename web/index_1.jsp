@@ -27,58 +27,49 @@
             <h2>FUNDAMENTOS JAVA</h2>
             </div>
         </header>
-        
-        <div class="tabs">
-            <div class="tab active">Ativas</div>
-            <div class="tab">Inativas</div>
-            <div class="tab">Pendentes</div>
-            <div class="tab">Excluidas</div>
-        </div>
-
-
-
-        <div class="item titulos-desktop">
-            <div class="item-titulo">Titulo</div>
-            <div class="item-value-pos"> Prioridade </div>
-            <div class="item-title"> Responsável</div>
-            <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
-            <div class="item-sub">Status e data</div>
-        </div>
-
+         
+        <table> 
+            <tr> 
+                <th>ID</th> 
+                <th>Título</th> 
+                <th>Prioridade</th> 
+                <th>Responsável</th> 
+                <th>Status</th> 
+                <th>Editar</th> 
+                <th>Excluir</th> 
+            </tr> 
              
         <% 
             TarefasDAO dao = new TarefasDAO();
             List<TarefasBean> tarefas = dao.listarTarefas();
 
             for (TarefasBean bean : tarefas) { %>
-            <div class="tarefa-individual">
-                <a href="#" class="link-editar" 
-                   onclick="editarTarefa(<%= bean.getId_tarefa() %>)">
-                    <div class="item">
+                <tr style="border-bottom: 1px solid black;"> 
+                    <td><%= bean.getId_tarefa() %></td>
+                    <td><%= bean.getTitulo() %></td>
+                    <td><%= bean.getPrioridadeFormatada() %></td>
+                    <td><%= bean.getResponsavel() %></td>
+                    <td><%= bean.getStatusValor() %></td> 
 
-                        <div class="item-titulo"><%= bean.getTitulo() %></div>
-                        <div class="item-value-pos"> <samp class="prioridade"> Prioridade: </samp><samp class="<%= bean.getPrioridade() %>" > <%= bean.getPrioridadeFormatada() %> </samp></div>
-                        <div class="item-title"> <samp class="responsavel"> Responsável:</samp> <%= bean.getResponsavel() %> </div>
-                        <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
-                        <div class="item-sub">
-                            <i class="fa-solid fa-circle"></i>Status: <%= bean.getStatusValor() %> | 
-                            <i class="fa-solid fa-calendar-days"></i>18 nov. 2025
-                        </div>
+                    <td style="text-align: center;"> 
+                        <a href="#"
+                           class="link-editar"
+                           onclick="editarTarefa(<%= bean.getId_tarefa() %>)">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
 
-                    </div>  
-
-                </a>
-                    <div>
+                    <td style="text-align: center;"> 
                         <a href="excluirTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
                            class="link-deletar">
                             <i class="fa-solid fa-trash"></i> 
-                        </a>              
-                    </div>
-                
-            </div>
+                        </a> 
+                    </td>
+
+                </tr>                 
             <% } 
         %>
-
+        </table> 
         
         <div class='overlay-custom' id='modalTarefas' style='display:none;'>
             <div class='box-modal-custom'>
