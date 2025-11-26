@@ -24,4 +24,10 @@
         removeAbandonedOnBorrow="true"
         removeAbandonedTimeout="60"
     />
+    
+    <Environment 
+        name="json/caminhoDB"
+        value="C:/src/FUNDAMENTOS-JAVA/DADOS/DB_GENERICO.json"
+        type="java.lang.String" 
+    />
 </Context>
