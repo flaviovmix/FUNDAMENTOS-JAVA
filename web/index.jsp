@@ -20,19 +20,15 @@
  
         <header>
             <div class="topo-sistema">
-<!--                <button type="button" class="btn-abrir-Tarefas" onclick="novaTarefa()">
-                    Nova Tarefa
-                </button>-->
+            <button type="button" class="btn-abrir-Tarefas" onclick="novaTarefa()">
+                Nova Tarefa
+            </button>
 
-                <h2 id="titulo-pagina">FUNDAMENTOS JAVA</h2>
-                <div>
-                    <button class="btn-listarJason" onclick="listarArquivosJSON()">Json</button>
-                    <button class="btn-listarPostgres" onclick="listarTarefasPostGres()">PostGres</button>
-                </div>
+            <h2>FUNDAMENTOS JAVA</h2>
             </div>
         </header>
          
-        <table id="tabelaPosgres"> 
+        <table> 
             <tr> 
                 <th>ID</th> 
                 <th>Título</th> 
@@ -42,11 +38,38 @@
                 <th>Editar</th> 
                 <th>Excluir</th> 
             </tr> 
-            <tbody id="listaArquivos"></tbody>
+             
+        <% 
+            TarefasDAO dao = new TarefasDAO();
+            List<TarefasBean> tarefas = dao.listarTarefas();
+
+            for (TarefasBean bean : tarefas) { %>
+                <tr style="border-bottom: 1px solid black;"> 
+                    <td><%= bean.getId_tarefa() %></td>
+                    <td><%= bean.getTitulo() %></td>
+                    <td><%= bean.getPrioridadeFormatada() %></td>
+                    <td><%= bean.getResponsavel() %></td>
+                    <td><%= bean.getStatusValor() %></td> 
+
+                    <td style="text-align: center;"> 
+                        <a href="#"
+                           class="link-editar"
+                           onclick="editarTarefa(<%= bean.getId_tarefa() %>)">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td style="text-align: center;"> 
+                        <a href="excluirTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
+                           class="link-deletar">
+                            <i class="fa-solid fa-trash"></i> 
+                        </a> 
+                    </td>
+
+                </tr>                 
+            <% } 
+        %>
         </table> 
-        
-
-
         
         <div class='overlay-custom' id='modalTarefas' style='display:none;'>
             <div class='box-modal-custom'>
@@ -97,7 +120,7 @@
 
                         <div class="group-custom">
                             <label class="label-custom" for="data_criacao">Data de Criação</label>
-                            <input type="date" id="data_criacao" name="data_criacao" required>
+                            <input type="date" id="data_criacao" name="data_criacao" value="2025-01-01" required>
                         </div>
 
                         <div class="group-custom">
@@ -126,8 +149,5 @@
         </div>
         
         <script src="./assets/js/modalTarefas.js"></script>
-        <script src="./assets/js/listarArquivosJSON.js"></script>
-        <script src="./assets/js/listarTarefasPostGres.js"></script>
-        
     </body> 
 </html>

@@ -55,24 +55,6 @@ header {
     transition: .2s ease;
 }
 
-.btn-listarJason, .btn-listarPostgres {
-    padding: 10px 15px;
-    border: none;
-    width: 150px;
-    color: black;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.btn-listarJason {
-    background-color: #FFF9C4;
-}
-
-.btn-listarPostgres {
-    background-color: #FFE0B2;
-}
-
 .btn-abrir-Tarefas:hover {
     background: #43A047;
     transform: translateY(-2px);
@@ -120,8 +102,4 @@ th {
 
 .link-editar:hover {
     color: blue;
-}
-
-.oculta {
-    display: none;
 }

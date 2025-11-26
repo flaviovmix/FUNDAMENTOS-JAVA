@@ -1,13 +1,11 @@
 package app.tarefas;
 
-import app.config.JsonDB;
 import app.config.PoolConexoes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class TarefasDAO {
     
@@ -151,5 +149,4 @@ public class TarefasDAO {
                 e.printStackTrace();
             }
         }
-
 }
