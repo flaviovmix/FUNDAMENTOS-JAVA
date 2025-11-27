@@ -8,9 +8,8 @@ import java.util.List;
 
 public class ExportarTarefasParaJson {
 
-    public void gerarArquivoJson() {
+    public void gerarArquivoJson(String caminhoDestino) {
         try {
-
             TarefasDAO dao = new TarefasDAO();
             List<TarefasBean> lista = dao.listarTarefas();
 
@@ -20,16 +19,14 @@ public class ExportarTarefasParaJson {
 
             String json = gson.toJson(lista);
 
-            String caminho = "C:/src/DB_GENERICO.json";
-
-            // AQUI é onde corrigimos os acentos:
+            // grava o JSON no caminho recebido do servlet
             OutputStreamWriter writer =
-                    new OutputStreamWriter(new FileOutputStream(caminho), "UTF-8");
+                    new OutputStreamWriter(new FileOutputStream(caminhoDestino), "UTF-8");
 
             writer.write(json);
             writer.close();
 
-            System.out.println("JSON gerado com sucesso em UTF-8!");
+            System.out.println("JSON gerado em: " + caminhoDestino);
 
         } catch (Exception e) {
             e.printStackTrace();

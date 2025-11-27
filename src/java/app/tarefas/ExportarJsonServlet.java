@@ -18,12 +18,21 @@ public class ExportarJsonServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            // 1 — Gera o JSON
-            ExportarTarefasParaJson exportar = new ExportarTarefasParaJson();
-            exportar.gerarArquivoJson();
+            // ===== gerar nome baseado na data, hora, minutos, segundos e milissegundos =====
+            String nomeArquivo = "TAREFAS-" +
+                    java.time.LocalDateTime.now()
+                    .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss-SSS"))
+                    + ".json";
 
-            // 2 — Caminho do arquivo gerado
-            String caminho = "C:/src/DB_GENERICO.json";
+            // Caminho real dentro do WEB-INF
+            String caminho = getServletContext().getRealPath("/WEB-INF/" + nomeArquivo);
+            System.out.println("CAMINHO REAL PARA EXPORTAR: " + caminho);
+
+            // 1 — Gera o JSON dentro do WEB-INF com o novo nome
+            ExportarTarefasParaJson exportar = new ExportarTarefasParaJson();
+            exportar.gerarArquivoJson(caminho);
+
+            // 2 — Confirma se o arquivo foi gerado
             File file = new File(caminho);
 
             if (!file.exists()) {
@@ -31,10 +40,10 @@ public class ExportarJsonServlet extends HttpServlet {
                 return;
             }
 
-            // 3 — Configurar headers para download
+            // 3 — Configura headers para download
             resp.setContentType("application/json; charset=UTF-8");
             resp.setHeader("Content-Disposition",
-                    "attachment; filename=\"DB_GENERICO.json\"");
+                    "attachment; filename=\"" + nomeArquivo + "\"");
 
             FileInputStream fis = new FileInputStream(file);
             OutputStream out = resp.getOutputStream();
@@ -47,6 +56,7 @@ public class ExportarJsonServlet extends HttpServlet {
             }
 
             fis.close();
+            file.delete();
             out.close();
 
         } catch (Exception e) {
@@ -54,4 +64,3 @@ public class ExportarJsonServlet extends HttpServlet {
         }
     }
 }
-
