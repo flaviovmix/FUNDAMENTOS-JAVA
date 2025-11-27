@@ -1,6 +1,7 @@
 package app.tarefas;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -21,20 +22,25 @@ public class TarefasJsonServlet extends HttpServlet {
             TarefasDAO dao = new TarefasDAO();
             List<TarefasBean> lista = dao.listarTarefas();
 
-            // 2 — Converter para JSON
-            Gson gson = new Gson();
+            // 2 — Converter para JSON COM UTF-8 CORRETO
+            Gson gson = new GsonBuilder()
+                    .disableHtmlEscaping()
+                    .setPrettyPrinting()
+                    .create();
+
             String json = gson.toJson(lista);
 
-            // 3 — Enviar resposta JSON
+            // 3 — Enviar resposta JSON CORRETAMENTE ENCODADA
+            resp.setCharacterEncoding("UTF-8");
             resp.setContentType("application/json; charset=UTF-8");
             resp.getWriter().write(json);
 
         } catch (Exception e) {
+            e.printStackTrace();
 
-            // Caso dê erro, retornar JSON válido para evitar travar o frontend
+            resp.setCharacterEncoding("UTF-8");
             resp.setContentType("application/json; charset=UTF-8");
             resp.getWriter().write("{\"erro\": \"" + e.getMessage() + "\"}");
-            e.printStackTrace();
         }
     }
 }

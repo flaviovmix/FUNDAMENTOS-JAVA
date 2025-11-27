@@ -15,6 +15,9 @@ public class AdicionarTarefaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
+            // FORÇA UTF-8 NA ENTRADA DO FORMULÁRIO
+            req.setCharacterEncoding("UTF-8");
+
             // Criar o bean e preencher
             TarefasBean bean = new TarefasBean();
 
