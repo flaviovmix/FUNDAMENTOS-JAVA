@@ -1,19 +1,5 @@
 async function carregarTarefas() {
 
-    const section = document.getElementById("section-tarefas");
-
-    section.innerHTML = `
-        <div class="item titulos-desktop">
-            <div class="item-titulo">Titulo</div>
-            <div class="item-value-pos"> Prioridade </div>
-            <div class="item-title"> Responsável</div>
-            <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
-            <div class="item-sub">Status e data</div>
-        </div>
-
-        <div id="lista-tarefas">Carregando...</div>
-    `;
-
     const container = document.getElementById("lista-tarefas");
 
     try {
