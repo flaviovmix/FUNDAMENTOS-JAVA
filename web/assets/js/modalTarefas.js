@@ -8,7 +8,7 @@ function closeModalTarefas() {
 
 function editarTarefa(id_tarefa) {
 
-    fetch("buscarTarefa.jsp?id_tarefa=" + id_tarefa)
+    fetch("buscar-tarefa?id_tarefa=" + id_tarefa)
         .then(function(resposta) {
             return resposta.json();
         })
@@ -33,7 +33,7 @@ function editarTarefa(id_tarefa) {
             document.getElementById("status").value = bean.status;
 
             document.querySelector(".form-tarefa-custom").action =
-                "editarTarefa.jsp?id_tarefa=" + bean.id_tarefa;
+                "editar-tarefa?id_tarefa=" + bean.id_tarefa;
 
             openModalTarefas();
         })
@@ -61,7 +61,7 @@ function novaTarefa() {
     document.getElementById("data_criacao").value = "";
     document.getElementById("status").value = "";
 
-    document.querySelector(".form-tarefa-custom").action = "salvarTarefa.jsp";
+    document.querySelector(".form-tarefa-custom").action = "adicionar-tarefa";
 
     openModalTarefas();
 }

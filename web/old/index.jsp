@@ -47,42 +47,9 @@
             <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
             <div class="item-sub">Status e data</div>
         </div>
-
-             
-        <% 
-            TarefasDAO dao = new TarefasDAO();
-            List<TarefasBean> tarefas = dao.listarTarefas();
-
-            for (TarefasBean bean : tarefas) { %>
-            <div class="tarefa-individual">
-                <a href="#" class="link-editar" 
-                   onclick="editarTarefa(<%= bean.getId_tarefa() %>)">
-                    <div class="item">
-
-                        <div class="item-titulo"><%= bean.getTitulo() %></div>
-                        <div class="item-value-pos"> <samp class="prioridade"> Prioridade: </samp><samp class="<%= bean.getPrioridade() %>" > <%= bean.getPrioridadeFormatada() %> </samp></div>
-                        <div class="item-title"> <samp class="responsavel"> Responsável:</samp> <%= bean.getResponsavel() %> </div>
-                        <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
-                        <div class="item-sub">
-                            <samp class="status"><i class="fa-solid fa-circle"></i>Status:</samp> <%= bean.getStatusValor() %> | 
-                            <i class="fa-solid fa-calendar-days"></i>18 nov. 2025
-                        </div>
-
-                    </div>  
-
-                </a>
-                    <div>
-                        <a href="excluirTarefa.jsp?id_tarefa=<%= bean.getId_tarefa() %>"
-                           class="link-deletar">
-                            <i class="fa-solid fa-trash"></i> 
-                        </a>              
-                    </div>
-                
-            </div>
-            <% } 
-        %>
-
         
+        <div id="lista-tarefas"></div>
+
         <div class='overlay-custom' id='modalTarefas' style='display:none;'>
             <div class='box-modal-custom'>
 
@@ -161,5 +128,7 @@
         </div>
         
         <script src="./assets/js/modalTarefas.js"></script>
+        <script src="./assets/js/carregarTarefas.js"></script>
+        <script>carregarTarefas();</script>
     </body> 
 </html>
