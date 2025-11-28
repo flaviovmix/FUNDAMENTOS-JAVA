@@ -1,26 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: #fafafa;
-    color: #222;
-}
 
-header {
-    width: 1100px;
-    background: #333;
-    margin: auto;
-}
+
+
 
 .topo-sistema {
-    width: 1100px;
-    margin: auto;
-    margin-bottom: 15px;
     
     color: #fff;
     padding: 15px 25px;
@@ -371,91 +354,4 @@ header {
 
 .tarefa-individual:has(i.fa-trash:hover) {
     background-color: #eee; /* amarelo pastel */
-}
-
-@media (min-width: 900px) {
-
-    body {
-        padding-bottom: 0;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .tabs {
-        max-width: 1100px;
-        margin: 10px auto;
-    }
-
-    /* Cada item vira uma linha */
-    .item {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 20px;
-        gap: 0;
-        border-bottom: 1px solid #ddd;
-        position: relative;
-    }
-
-    /* Remove estilo de card */
-    .item + .item {
-        border-top: none;
-    }
-
-    /* Colunas em formato de tabela */
-    .item-titulo {
-        flex: 2;
-        margin-bottom: 0;
-        font-size: 18px;
-        width: 100%;
-    }
-
-    .item-value-pos,
-    .item-value-neg {
-        flex: 1;
-        font-size: 15px;
-    }
-
-    .item-title {
-        flex: 1;
-        margin-bottom: 0;
-        font-size: 15px;
-    }
-
-    .item-sub {
-        flex: 1.5;
-        justify-content: flex-start;
-        font-size: 14px;
-    }
-
-    /* Setinha no final da linha */
-    .arrow {
-        display: none !important;
-    }
-
-    .prioridade {
-        display: none !important;
-    }
-    .status {
-        display: none !important;
-    }    
-    
-
-    .responsavel {
-        display: none !important;
-    }
-
-    .arrow i {
-        color: #444;
-    }
-
-    .titulos-desktop {
-        display: flex;
-    }
-
-    /* Bottom nav escondido no desktop */
-    .bottom-nav {
-        display: none;
-    }
-
 }

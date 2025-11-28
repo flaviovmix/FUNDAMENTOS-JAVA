@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>To-Do — Estático</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="boards">
+      <section class="board">
+        <ul class="lista-tarefas">
+<li class="todo" data-prio="baixa">
+  <a href="#" class="todo-link">
+    <div class="content">
+      <div class="t-titulo">Revisar notas antigas</div>
+
+      <div class="t-responsavel">
+        <span class="label-res">Resp.: </span>Flávio Passos
+      </div>
+
+      <div class="t-data">
+        <span><i class="fa-solid fa-calendar-alt"></i></span> 12 jan. 2025
+      </div>
+
+      <div class="meta">
+        <div class="detalhes-tarefa">
+          <!-- <span class="badge prioridade">Baixa</span> -->
+          <span class="badge quant-subtarefas">3</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Organizar anotações antigas do projeto principal e separar o que ainda é útil.</p>
+  </a>
+
+  <button class="trash-btn" onclick="excluirTarefa(101)">
+    <a href="lixeira" class="link-lixeira"><i class="fa-solid fa-trash"></i></a>
+  </button>
+</li>
+
+
+<li class="todo" data-prio="media">
+  <a href="#" class="todo-link">
+    <div class="content">
+      <div class="t-titulo">Ajustar layout mobile</div>
+
+      <div class="t-responsavel">
+        <span class="label-res">Resp.: </span>Flávio Passos
+      </div>
+
+      <div class="t-data">
+        <span><i class="fa-solid fa-calendar-alt"></i></span> 20 jan. 2025
+      </div>
+
+      <div class="meta">
+        <div class="detalhes-tarefa">
+          <!-- <span class="badge prioridade">Média</span> -->
+          <span class="badge quant-subtarefas">8</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Corrigir comportamento das divs no mobile e reorganizar conteúdo na vertical.</p>
+  </a>
+
+  <button class="trash-btn" onclick="excluirTarefa(102)">
+    <a href="lixeira" class="link-lixeira"><i class="fa-solid fa-trash"></i></a>
+  </button>
+</li>
+
+<li class="todo" data-prio="alta">
+  <a href="#" class="todo-link">
+    <div class="content">
+      <div class="t-titulo">Corrigir erro do DAO</div>
+
+      <div class="t-responsavel">
+        <span class="label-res">Resp.: </span>Flávio Passos
+      </div>
+
+      <div class="t-data">
+        <span><i class="fa-solid fa-calendar-alt"></i></span> 25 jan. 2025
+      </div>
+
+      <div class="meta">
+        <div class="detalhes-tarefa">
+          <!-- <span class="badge prioridade">Alta</span> -->
+          <span class="badge quant-subtarefas">12</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Investigar NullPointerException ao carregar tarefas na index.jsp.</p>
+  </a>
+
+  <button class="trash-btn" onclick="excluirTarefa(103)">
+    <a href="lixeira" class="link-lixeira"><i class="fa-solid fa-trash"></i></a>
+  </button>
+</li>
+
+<li class="todo" data-prio="neutra">
+  <a href="#" class="todo-link">
+    <div class="content">
+      <div class="t-titulo">Listar ideias futuras</div>
+
+      <div class="t-responsavel">
+        <span class="label-res">Resp.: </span>Flávio Passos
+      </div>
+
+      <div class="t-data">
+        <span><i class="fa-solid fa-calendar-alt"></i></span> 30 jan. 2025
+      </div>
+
+      <div class="meta">
+        <div class="detalhes-tarefa">
+          <!-- <span class="badge prioridade">Neutra</span> -->
+          <span class="badge quant-subtarefas">0</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Registrar ideias para novas funções do app sem necessidade imediata.</p>
+  </a>
+
+  <button class="trash-btn" onclick="excluirTarefa(104)">
+    <a href="lixeira" class="link-lixeira"><i class="fa-solid fa-trash"></i></a>
+  </button>
+</li>
+
+
+
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

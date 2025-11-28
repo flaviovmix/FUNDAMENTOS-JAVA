@@ -1,0 +1,265 @@
+/* ============================
+   VARIÁVEIS
+============================ */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --txt: #1e1f24;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --shadow: 0 6px 24px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.04);
+
+  --low:  #3498db;
+  --med:  #f39c12;
+  --high: #e74c3c;
+  --neltra: #636363;
+}
+
+/* ============================
+   BASE
+============================ */
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+}
+
+/* ============================
+   CONTAINER PRINCIPAL
+============================ */
+.boards {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+.board {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+/* ============================
+   LISTA DE TAREFAS
+============================ */
+.lista-tarefas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============================
+   CARD BASE
+============================ */
+.todo {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 0;
+}
+
+.todo:hover {
+    background-color: #f5f5f5;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 22px;
+}
+
+.t-titulo, .t-responsavel, .t-data {
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+}
+
+p {
+  margin: 4px 0 0;
+  color: #777;
+  line-height: 1.4;
+}
+
+/* ============================
+   META
+============================ */
+.meta {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.badge {
+  background: #f3f4f6;
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.detalhes-tarefa {
+  margin-right: 50px;
+}
+
+.meta i {
+  font-size: 15px;
+  display: block;
+}
+
+/* ============================
+   CORES DAS PRIORIDADES
+============================ */
+.todo[data-prio="baixa"]  { border-left-color: var(--low); }
+.todo[data-prio="media"]  { border-left-color: var(--med); }
+.todo[data-prio="alta"]   { border-left-color: var(--high); }
+.todo[data-prio="neltra"] { border-left-color: var(--neltra); }
+
+.todo[data-prio="baixa"] .badge.prioridade  { color: var(--low);  border-color: #d6eaf8; }
+.todo[data-prio="media"] .badge.prioridade  { color: var(--med);  border-color: #fdebd0; }
+.todo[data-prio="alta"]  .badge.prioridade  { color: var(--high); border-color: #fadbd8; }
+
+/* ============================
+   LINK DO CARD
+============================ */
+.todo-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.link-lixeira {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============================
+   BOTÃO DE LIXEIRA (fora do link)
+============================ */
+.trash-btn {
+  position: absolute;
+  right: 7px;
+  bottom: 12px;
+  font-size: 25px;
+  color: #bebebe;
+  background: var(--card);
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.trash-btn i { pointer-events: none; }
+
+/* ============================
+   MOBILE
+============================ */
+@media (max-width: 767px) {
+
+  .boards {
+    margin-top: 24px;
+    padding: 0 12px;
+  }
+
+  .meta i.fa-pen-to-square {
+    display: none;
+  }
+
+  .meta {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .meta .badge.prioridade { margin-right: 6px; }
+
+  .t-titulo {
+    font-size: 1.25rem;
+    margin-top: -25px;
+  }
+
+  .label-res { display: inline; }
+
+  .trash-btn {
+    right: 10px;
+    bottom: 60px;
+    font-size: 30px;
+    color: #bebebe;
+
+  }
+
+  .meta {
+    right: -40px;
+  }
+  }
+
+
+/* ============================
+   DESKTOP / TABLET
+============================ */
+@media (min-width: 768px) {
+
+  .lista-tarefas { gap: 6px; }
+
+  .content {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .t-titulo, .t-responsavel, .t-data {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .meta {
+    position: static;
+    margin-left: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .meta i {
+    display: inline-block;
+    margin-left: 4px;
+  }
+
+  .todo p {
+    margin-top: 6px;
+    width: 100%;
+    padding-left: 4px;
+  }
+
+  .label-res { display: none; }
+}

@@ -12,46 +12,34 @@ async function carregarTarefas() {
         
         lista.forEach(bean => {
             container.innerHTML += `
-            <div class="tarefa-individual">
-                <a href="#" class="link-editar" 
-                   onclick="editarTarefa(${bean.id_tarefa})">
-                    <div class="item">
+           <li class="todo" data-prio="${bean.prioridade}">
+              <a href="#" onclick="editarTarefa(${bean.id_tarefa})" class="todo-link">
+                <div class="content">
+                  <div class="t-titulo">${bean.titulo}</div>
 
-                        <div class="item-titulo">${bean.titulo}</div>
+                  <div class="t-responsavel">
+                    <span class="label-res">Resp.: </span> ${bean.responsavel}
+                  </div>
 
-                        <div class="item-value-pos">
-                            <samp class="prioridade">Prioridade:</samp>
-                            <samp class="${bean.prioridade}">
-                                ${bean.prioridadeFormatada}
-                            </samp>
-                        </div>
+                  <div class="t-data">
+                    <span><i class="fa-solid fa-calendar-alt"></i></span> 12 jan. 2025
+                  </div>
 
-                        <div class="item-title">
-                            <samp class="responsavel">Responsável:</samp>
-                            ${bean.responsavel}
-                        </div>
-
-                        <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
-
-                        <div class="item-sub">
-                            <samp class="status">
-                                <i class="fa-solid fa-circle"></i>Status:
-                            </samp>
-                            ${bean.statusValor} |
-                            <i class="fa-solid fa-calendar-days"></i>18 nov. 2025
-                        </div>
-
+                  <div class="meta">
+                    <div class="detalhes-tarefa">
+                      <!-- <span class="badge prioridade">Baixa</span> -->
+                      <span class="badge quant-subtarefas">3 subtarefas</span>
                     </div>
-                </a>
-
-                <div>
-                    <a href="excluir-tarefa?id_tarefa=${bean.id_tarefa}"
-                       class="link-deletar">
-                        <i class="fa-solid fa-trash"></i> 
-                    </a>
+                  </div>
                 </div>
 
-            </div>
+                <p>${bean.descricao}</p>
+              </a>
+
+              <button class="trash-btn" onclick="excluirTarefa(101)">
+                <a href="excluir-tarefa?id_tarefa=${bean.id_tarefa}" class="link-lixeira"><i class="fa-solid fa-trash"></i></a>
+              </button>
+            </li>
             `;
         });
 
