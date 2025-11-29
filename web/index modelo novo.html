@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>To-Do — Estático</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/modalTarefa.css">
+        <link rel="stylesheet" href="assets/css/tarefa-nova.css" />
+        <link rel="stylesheet" href="assets/css/modeloNovo.css" />
+    </head>
+
+    <body>
+        <main class="boards">
+            <header>
+                <div class="topo-sistema">
+                    <button type="button" class="btn-abrir-Tarefas" onclick="novaTarefa()">
+                        Nova Tarefa
+                    </button>
+                    <button type="button" class="btn-exportar-json" onclick="window.location.href = 'exportar-json'">
+                        Exportar JSON
+                    </button>
+
+                </div>
+            </header>
+            <div class="tabs">
+                <div class="tab active">Ativas</div>
+                <div class="tab">Inativas</div>
+                <div class="tab">Pendentes</div>
+                <div class="tab">Excluidas</div>
+            </div>
+            <section class="board">
+                <ul class="lista-tarefas" id="lista-tarefas">
+
+                </ul>
+            </section>
+        </main>
+        <script src="./assets/js/modalTarefas.js"></script>
+        <script src="assets/js/revelarBotoesMobile.js"></script>
+        <script src="./assets/js/carregarTarefas.js"></script>
+
+        <script>carregarTarefas();</script>
+        <script>desenharModal();</script>
+        
+        <script>
+          async function iniciar() {
+            await carregarTarefas();
+            inicializarSwipeMobile(); // ← ATIVA O SWIPE APÓS CARREGAR
+          }
+          iniciar();
+        </script>
+    </body>
+
+</html>

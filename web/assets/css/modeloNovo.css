@@ -7,28 +7,20 @@
   --txt: #1e1f24;
   --muted: #6b7280;
   --line: #e5e7eb;
-  --shadow: 0 6px 24px rgba(16, 24, 40, .06),
-            0 2px 6px rgba(16, 24, 40, .04);
+  --shadow: 0 6px 24px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.04);
 
-  --low:   #3498db;
-  --med:   #f39c12;
-  --high:  #e74c3c;
-  --neltra:#636363;
+  --low:  #3498db;
+  --med:  #f39c12;
+  --high: #e74c3c;
+  --neltra: #636363;
 }
 
 /* ============================
    BASE
 ============================ */
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
+* { box-sizing: border-box; }
 
-html,
-body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -77,18 +69,19 @@ body {
   border-left: 6px solid var(--line);
   border-radius: 14px;
   box-shadow: var(--shadow);
-  margin: 0 -7px 0 -9px;
+
   position: relative;
-  overflow: hidden; /* nada vaza pra fora */
+  overflow: hidden;  /* nada vaza pra fora do card */
 }
 
+/* Wrapper que contém card deslizante + ações */
 .todo-wrapper {
   position: relative;
   display: flex;
   width: 100%;
 }
 
-/* Card que desliza (link) */
+/* Card que desliza – agora cobre 100% do card (inclui padding) */
 .todo-link {
   flex: 1 0 100%;
   display: block;
@@ -98,14 +91,13 @@ body {
   text-decoration: none;
   background: var(--card);
 
-  padding: 12px 14px;
+  padding: 12px 14px;      /* antes era no .todo – visual fica igual */
   transform: translateX(0);
   transition: transform .25s ease;
   position: relative;
-  z-index: 2; /* acima do fundo de ações */
+  z-index: 2;              /* por cima da faixa rosa */
 }
 
-/* Conteúdo interno */
 .content {
   display: flex;
   flex-direction: column;
@@ -128,7 +120,7 @@ p {
 }
 
 /* ============================
-   META / BADGES
+   META
 ============================ */
 .meta {
   position: absolute;
@@ -161,36 +153,14 @@ p {
 /* ============================
    CORES DAS PRIORIDADES
 ============================ */
-.todo[data-prio="baixa"] {
-  border-left-color: var(--low);
-}
+.todo[data-prio="baixa"]  { border-left-color: var(--low); }
+.todo[data-prio="media"]  { border-left-color: var(--med); }
+.todo[data-prio="alta"]   { border-left-color: var(--high); }
+.todo[data-prio="neltra"] { border-left-color: var(--neltra); }
 
-.todo[data-prio="media"] {
-  border-left-color: var(--med);
-}
-
-.todo[data-prio="alta"] {
-  border-left-color: var(--high);
-}
-
-.todo[data-prio="neltra"] {
-  border-left-color: var(--neltra);
-}
-
-.todo[data-prio="baixa"] .badge.prioridade {
-  color: var(--low);
-  border-color: #d6eaf8;
-}
-
-.todo[data-prio="media"] .badge.prioridade {
-  color: var(--med);
-  border-color: #fdebd0;
-}
-
-.todo[data-prio="alta"] .badge.prioridade {
-  color: var(--high);
-  border-color: #fadbd8;
-}
+.todo[data-prio="baixa"] .badge.prioridade  { color: var(--low);  border-color: #d6eaf8; }
+.todo[data-prio="media"] .badge.prioridade  { color: var(--med);  border-color: #fdebd0; }
+.todo[data-prio="alta"]  .badge.prioridade  { color: var(--high); border-color: #fadbd8; }
 
 /* ============================
    LINK DA LIXEIRA ANTIGA
@@ -204,7 +174,7 @@ p {
 
 /* ============================
    BOTÃO DE LIXEIRA (fora do link)
-   (usado em cards sem swipe)
+   (usado nos cards sem swipe)
 ============================ */
 .trash-btn {
   position: absolute;
@@ -220,128 +190,50 @@ p {
   z-index: 20;
 }
 
-.trash-btn i {
-  pointer-events: none;
-}
+.trash-btn i { pointer-events: none; }
 
 /* ============================
-   ÁREA DAS AÇÕES (FUNDO 3x2)
+   ÁREA DAS AÇÕES (FUNDO ROSA)
 ============================ */
-.actions-wrapper {
+.todo-actions {
   position: absolute;
   top: 0;
   right: 0;
   height: 100%;
-  width: 66%; /* combina com translateX(-66%) */
+  width: 66%;                /* agora ocupa ~66% do card */
+
   background: linear-gradient(90deg, #ffffff, #eaeaea);
   display: flex;
-  flex-direction: column;   /* linha de cima + linha de baixo */
-  justify-content: center;
-  align-items: stretch;
-  gap: 10px;
-  padding: 8px 6px;
-  z-index: 1;               /* atrás do .todo-link */
-}
-
-/* cada "linha" com 3 botões */
-.todo-actions {
-  display: flex;
-  flex: 1;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 8px;
+  justify-content: space-evenly;  /* distribui melhor os botões */
+  gap: 12px;
+
+  z-index: 1;          /* atrás do card deslizante */
 }
 
-/* Botões redondos */
+/* Botões de ação */
 .btn-action {
   border: none;
+  /* border-radius: 999px; */
+  /* padding: 30px 30px; */
   cursor: pointer;
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  background: transparent;
+  font-size: 45px;           /* ícone maior */
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  
 }
 
-.btn-action i {
-  font-size: 35px;
+.btn-edit,
+.btn-middle,
+.btn-delete {
+  background: transparent !important;
 }
 
-/* Cores pastel dos ícones */
-.btn-edit i {
-  color: #7abcf5;   /* azul pastel */
-}
-
-.btn-middle i {
-  color: #f5c568;   /* amarelo pastel */
-}
-
-.btn-delete i {
-  color: #f28b82;   /* vermelho pastel */
-}
-
-/* Quando o card está com ações abertas (mobile) */
+/* Quando o card está com ações abertas */
 .todo.show-actions .todo-link {
-  transform: translateX(-66%);
-}
-
-/* ============================
-   TOGGLE (ATIVO / INATIVO)
-============================ */
-.toggle {
-  position: relative;
-  width: 70px;
-  height: 31px;
-  display: inline-block;
-}
-
-.toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* trilho */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background: #e5e7eb;
-  border-radius: 999px;
-  transition: .2s;
-}
-
-/* bolinha */
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 27px;
-  width: 27px;
-  left: 3px;
-  top: 2px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0,0,0,.25);
-  transition: .2s;
-}
-
-/* checked */
-.toggle input:checked + .slider {
-  background: var(--low);
-}
-
-.toggle input:checked + .slider:before {
-  transform: translateX(36px);
-}
-
-/* posição do toggle dentro do card (padrão – mobile) */
-.selecaoAtivoInativo {
-  position: absolute;
-  right: 12px;
-  bottom: 55px;
-  z-index: 25; /* acima de todo-link e ações */
+  transform: translateX(-66%); /* desliza 66% da largura do card */
 }
 
 /* ============================
@@ -373,12 +265,10 @@ p {
     margin-top: -25px;
   }
 
-  .label-res {
-    display: inline;
-  }
+  .label-res { display: inline; }
 
   .trash-btn {
-    display: none; /* mobile usa swipe */
+    display: none;
   }
 }
 
@@ -428,20 +318,23 @@ p {
     padding-left: 4px;
   }
 
-  .label-res {
-    display: none;
-  }
+  .label-res { display: none; }
 
-  /* Em telas maiores, desativa visualmente o slide,
-     mas o .show-actions continua existindo (pra esconder o toggle) */
+  /* Em telas maiores, desativa o slide */
   .todo.show-actions .todo-link {
     transform: translateX(0);
   }
+}
 
-  /* ajuste do toggle no desktop/tablet: menor e mais embaixo */
-  .selecaoAtivoInativo {
-    right: 45px;
-    bottom: 2px;
-    transform: scale(0.85);
-  }
+
+.btn-edit i {
+  color: #3498db;
+}
+
+.btn-middle i {
+  color: #f39c12;
+}
+
+.btn-delete i {
+  color: #e74c3c;
 }

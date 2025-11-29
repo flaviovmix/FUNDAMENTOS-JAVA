@@ -26,8 +26,6 @@ public class ExportarTarefasParaJson {
             writer.write(json);
             writer.close();
 
-            System.out.println("JSON gerado em: " + caminhoDestino);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

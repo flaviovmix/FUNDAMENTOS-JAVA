@@ -18,11 +18,10 @@ public class TarefasJsonServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            // 1 — Buscar lista no banco
+            
             TarefasDAO dao = new TarefasDAO();
             List<TarefasBean> lista = dao.listarTarefas();
 
-            // 2 — Converter para JSON COM UTF-8 CORRETO
             Gson gson = new GsonBuilder()
                     .disableHtmlEscaping()
                     .setPrettyPrinting()
@@ -30,7 +29,6 @@ public class TarefasJsonServlet extends HttpServlet {
 
             String json = gson.toJson(lista);
 
-            // 3 — Enviar resposta JSON CORRETAMENTE ENCODADA
             resp.setCharacterEncoding("UTF-8");
             resp.setContentType("application/json; charset=UTF-8");
             resp.getWriter().write(json);
