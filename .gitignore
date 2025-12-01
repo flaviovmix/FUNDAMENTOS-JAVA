@@ -9,6 +9,7 @@ nbproject/private/
 # compilados
 build/
 dist/
+apagar/
 *.class
 
 # IDEs

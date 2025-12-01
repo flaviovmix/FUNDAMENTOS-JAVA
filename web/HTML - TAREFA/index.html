@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do — Estático</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font Awesome permanece intacto -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css">
+
+
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="area-quadros">
+
+    <section class="quadro">
+      <ul class="lista-tarefas">
+
+        
+
+       
+
+        <li class="cartao-tarefa" data-prioridade="baixa">
+
+          <div class="cartao-tarefa-wrapper">
+
+            <!-- ÁREA DESLIZÁVEL -->
+            <a href="www.google.com" class="cartao-tarefa-link">
+
+              <div class="conteudo-cartao">
+
+                <div class="tarefa-titulo">Fundamentos Java 25</div>
+
+                <div class="tarefa-responsavel">
+                  <span class="rotulo-responsavel">Resp.: </span>
+                  João Pedro Martins de Sousa
+                </div>
+
+                <div class="tarefa-data">
+                  <span><i class="fa-solid fa-calendar-alt"></i></span>
+                  Qua. - 12 jan. 2025
+                </div>
+
+                <!-- Informações extras -->
+                <div class="painel-informacoes">
+                  <div class="tarefa-detalhes">
+                    <span class="etiqueta quantidade-subtarefas">3 subtarefas</span>
+                    <span class="etiqueta-id quantidade-subtarefas">#1</span>
+                  </div>
+                </div>
+
+                <!-- Toggle ON/OFF -->
+                <div class="area-status">
+                  <label class="alternador-status">
+                    <input type="checkbox" checked>
+                    <span class="alternador-slider"></span>
+                  </label>
+                </div>
+
+              </div>
+
+              <p class="descricao-tarefa">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              </p>
+
+            </a>
+
+            <!-- FUNDO COM BOTÕES (SWIPE) -->
+            <div class="painel-acoes">
+
+              <!-- LINHA SUPERIOR -->
+              <div class="acoes-tarefa linha-superior">
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-star"></i>
+                </button>
+
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+
+              <!-- LINHA INFERIOR -->
+              <div class="acoes-tarefa linha-inferior">
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-star"></i>
+                </button>
+
+                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- BOTÃO LIXEIRA (DESKTOP) -->
+            <!-- <button class="botao-lixeira" onclick="excluirTarefa(101)">
+              <a href="lixeira" class="link-lixeira">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            </button> -->
+
+            <button class="botao-acao-desktop">
+            <i class="fa-solid fa-chevron-left fa-sm"></i>
+            </button>
+
+          </div>
+        
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="revelarBotoesMobile,js"></script>
+
+</body>
+
+</html>
