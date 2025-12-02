@@ -25,7 +25,6 @@
     <section class="quadro">
       <ul class="lista-tarefas">
 
-        <!-- 1 -->
         <li class="cartao-tarefa" data-prioridade="baixa" aria-describedby="baixa">
           <span id="baixa" class="sr-only">Prioridade: baixa</span>
           <div class="cartao-tarefa-wrapper">
@@ -64,38 +63,50 @@
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               </p>
             </a>
-
             <div class="painel-acoes">
+
               <div class="acoes-tarefa linha-superior">
-                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()" data-tooltip="Editar tarefa">
+                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()"
+                  data-tooltip="Exibir tarefa">
                   <i class="fa-solid fa-eye"></i>
                   <span class="legenda-acao">exibir</span>
                 </button>
-                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()">
-                  <i class="fa-solid fa-pencil"></i>
-                  <span class="legenda-acao">editar</span>
+
+                <button class="botao-acao" aria-label="Favoritar tarefa" onclick="abrirFuncao()"
+                  data-tooltip="Favoritar tarefa">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="legenda-acao">favoritar</span>
                 </button>
-                <button class="botao-acao" aria-label="Deletar tarefa" onclick="abrirFuncao()">
-                  <i class="fa-solid fa-heart"></i>
-                  <span class="legenda-acao">deletar</span>
+
+                <button class="botao-acao" aria-label="Alterar prioridade" onclick="abrirFuncao()"
+                  data-tooltip="Alterar prioridade">
+                  <i class="fa-solid fa-flag"></i>
+                  <span class="legenda-acao">alterar prior.</span>
                 </button>
               </div>
 
               <div class="acoes-tarefa linha-inferior">
-                <button class="botao-acao" aria-label="Arquivar tarefa" onclick="abrirFuncao()">
+                <button class="botao-acao" aria-label="Editar tarefa" onclick="abrirFuncao()"
+                  data-tooltip="Editar tarefa">
                   <i class="fa-solid fa-pen-to-square"></i>
-                  <span class="legenda-acao">arquivar</span>
+                  <span class="legenda-acao">editar</span>
                 </button>
-                <button class="botao-acao" aria-label="Favoritar tarefa" onclick="abrirFuncao()">
-                  <i class="fa-solid fa-star"></i>
-                  <span class="legenda-acao">favotirar</span>
+
+                <button class="botao-acao" aria-label="Recarregar tarefa" onclick="abrirFuncao()"
+                  data-tooltip="Recarregar tarefa">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                  <span class="legenda-acao">recarregar</span>
                 </button>
-                <button class="botao-acao" aria-label="Ocultar tarefa" onclick="abrirFuncao()">
+
+                <button class="botao-acao" aria-label="Deletar tarefa" onclick="abrirFuncao()"
+                  data-tooltip="Deletar tarefa">
                   <i class="fa-solid fa-trash"></i>
-                  <span class="legenda-acao">ocultar</span>
+                  <span class="legenda-acao">deletar</span>
                 </button>
               </div>
+
             </div>
+
 
             <button class="botao-acao-desktop">
               <i class="fa-solid fa-chevron-left fa-sm"></i>

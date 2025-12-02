@@ -1,4 +1,24 @@
 /* ============================
+   VARIÁVEIS
+============================ */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --txt: #1e1f24;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --shadow: 0 6px 24px rgba(16, 24, 40, .06),
+    0 2px 6px rgba(16, 24, 40, .04);
+
+  --low: #3498db;
+  --med: #f39c12;
+  --high: #e74c3c;
+  --neltra: #636363;
+
+  --cinza-claro: #efefef;
+}
+
+/* ============================
    BASE
 ============================ */
 * {
@@ -104,15 +124,6 @@ body {
   z-index: 9999;
 }
 
-.botao-acao:hover .legenda-acao {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-22px);
-  /* sobe levemente */
-  transition-delay: 0s;
-  /* remove o atraso ao aparecer */
-}
-
 /* animação suave no ícone do botão desktop */
 .botao-acao-desktop i {
   transition: transform .25s ease;
@@ -195,25 +206,6 @@ body {
 
 .alternador-status input:checked + .alternador-slider::before {
   transform: translateX(36px);
-}
-
-
-/* ============================
-   VARIÁVEIS
-============================ */
-:root {
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --txt: #1e1f24;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --shadow: 0 6px 24px rgba(16, 24, 40, .06),
-    0 2px 6px rgba(16, 24, 40, .04);
-
-  --low: #3498db;
-  --med: #f39c12;
-  --high: #e74c3c;
-  --neltra: #636363;
 }
 
 
@@ -358,6 +350,7 @@ body {
   color: inherit;
   text-decoration: none;
   padding: 12px 14px;
+  box-shadow: 6px 0 12px rgba(0, 0, 0, 0.10);
 
   transform: translateX(0);
   transition: transform .25s ease;
@@ -366,13 +359,24 @@ body {
   z-index: 2;
 }
 
+.cartao-tarefa-link:hover {
+  background-color: var(--cinza-claro);
+}
+
 
 /* ============================================
    DESKTOP — TELA MÉDIA 1080px A 1439px
    Layout horizontal completamente alinhado
 ============================================ */
 @media (min-width: 1080px) {
-
+.botao-acao:hover .legenda-acao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-22px);
+  /* sobe levemente */
+  transition-delay: 0s;
+  /* remove o atraso ao aparecer */
+}
   .painel-acoes {
     position: absolute;
     top: 0;
