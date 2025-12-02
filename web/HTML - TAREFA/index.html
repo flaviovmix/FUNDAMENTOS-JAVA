@@ -9,7 +9,9 @@
   <!-- Font Awesome permanece intacto -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./assets/css/temaEscuro.css">
+  <!-- <link rel="stylesheet" href="./assets/css/temaClaro.css"> -->
+  <link rel="stylesheet" href="./assets/css/tarefas.css">
 
 
   <style>
@@ -20,9 +22,9 @@
 
 <body>
 
-  <main class="area-quadros">
+  <main class="area-main">
 
-    <section class="quadro">
+    <section class="quadro-tarefas">
       <ul class="lista-tarefas">
 
         <li class="cartao-tarefa" data-prioridade="baixa" aria-describedby="baixa">
@@ -43,14 +45,14 @@
                   Qua. - 12 jan. 2025
                 </div>
 
-                <div class="painel-informacoes">
+                <div class="tarefa-painel-informacoes">
                   <div class="tarefa-detalhes">
                     <span class="quant-subtarefas">3 subtarefas</span>
                     <span class="etiqueta-id">#1</span>
                   </div>
                 </div>
 
-                <div class="area-status">
+                <div class="tarefa-area-status">
                   <label class="alternador-status">
                     <input type="checkbox" checked>
                     <span class="alternador-slider"></span>
@@ -59,26 +61,26 @@
 
               </div>
 
-              <p class="descricao-tarefa">
+              <p class="tarefa-descricao">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               </p>
             </a>
-            <div class="painel-acoes">
+            <div class="painel-acoes-tarefas">
 
               <div class="acoes-tarefa linha-superior">
-                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Exibir tarefa" onclick="abrirFuncao()"
                   data-tooltip="Exibir tarefa">
                   <i class="fa-solid fa-eye"></i>
                   <span class="legenda-acao">exibir</span>
                 </button>
 
-                <button class="botao-acao" aria-label="Favoritar tarefa" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Favoritar tarefa" onclick="abrirFuncao()"
                   data-tooltip="Favoritar tarefa">
                   <i class="fa-solid fa-star"></i>
                   <span class="legenda-acao">favoritar</span>
                 </button>
 
-                <button class="botao-acao" aria-label="Alterar prioridade" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Alterar prioridade" onclick="abrirFuncao()"
                   data-tooltip="Alterar prioridade">
                   <i class="fa-solid fa-flag"></i>
                   <span class="legenda-acao">alterar prior.</span>
@@ -86,19 +88,19 @@
               </div>
 
               <div class="acoes-tarefa linha-inferior">
-                <button class="botao-acao" aria-label="Editar tarefa" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Editar tarefa" onclick="abrirFuncao()"
                   data-tooltip="Editar tarefa">
                   <i class="fa-solid fa-pen-to-square"></i>
                   <span class="legenda-acao">editar</span>
                 </button>
 
-                <button class="botao-acao" aria-label="Recarregar tarefa" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Recarregar tarefa" onclick="abrirFuncao()"
                   data-tooltip="Recarregar tarefa">
                   <i class="fa-solid fa-arrows-rotate"></i>
                   <span class="legenda-acao">recarregar</span>
                 </button>
 
-                <button class="botao-acao" aria-label="Deletar tarefa" onclick="abrirFuncao()"
+                <button class="botao-acao-tarefas" aria-label="Deletar tarefa" onclick="abrirFuncao()"
                   data-tooltip="Deletar tarefa">
                   <i class="fa-solid fa-trash"></i>
                   <span class="legenda-acao">deletar</span>
@@ -108,7 +110,7 @@
             </div>
 
 
-            <button class="botao-acao-desktop">
+            <button class="botao-acao-desktop-tarefa">
               <i class="fa-solid fa-chevron-left fa-sm"></i>
             </button>
 
@@ -120,7 +122,8 @@
 
   </main>
 
-  <script src="revelarBotoesMobile.js"></script>
+  <script src="./assets/js/revelarPainelAcoes.js"></script>
+
   <script>
     function abrirFuncao() {
       alert("Função executada!");

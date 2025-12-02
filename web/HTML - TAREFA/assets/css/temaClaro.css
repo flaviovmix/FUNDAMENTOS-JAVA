@@ -1,0 +1,44 @@
+:root {
+  /* escala neutra pedida */
+  --gray-222: #222222;
+  --gray-777: #777777;
+  --gray-ccc: #cccccc;
+
+  /* básicos */
+  --pure-white: #ffffff;  /* branco real */
+  --black: #000000;
+
+  /* superfície forte do tema (começa branca no tema claro) */
+  --surface-strong: #ffffff;
+
+  /* opcional: se quiser ainda usar --white em outro lugar */
+  --white: #ffffff;
+
+  /* tema geral */
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --txt: #1e1f24;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --shadow:
+    0 6px 24px rgba(16, 24, 40, .06),
+    0 2px 6px rgba(16, 24, 40, .04);
+
+  /* prioridades */
+  --low: #3498db;
+  --med: #f39c12;
+  --high: #e74c3c;
+  --neltra: #636363;
+
+  /* neutros específicos da UI */
+  --panel-gradient-end: #eaeaea;
+  --badge-bg: #f3f4f6;
+  --btn-bg: #e8e8e8;
+  --btn-bg-hover: #d4d4d4;
+  --card-hover: #efefef;
+  --icon-muted: #8e8e8e;
+  --thumb-shadow: rgba(0, 0, 0, .25);
+}
+
+
+agora muda pra escuro

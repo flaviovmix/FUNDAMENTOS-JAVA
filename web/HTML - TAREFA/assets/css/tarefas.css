@@ -1,24 +1,4 @@
 /* ============================
-   VARIÁVEIS
-============================ */
-:root {
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --txt: #1e1f24;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --shadow: 0 6px 24px rgba(16, 24, 40, .06),
-    0 2px 6px rgba(16, 24, 40, .04);
-
-  --low: #3498db;
-  --med: #f39c12;
-  --high: #e74c3c;
-  --neltra: #636363;
-
-  --cinza-claro: #efefef;
-}
-
-/* ============================
    BASE
 ============================ */
 * {
@@ -27,16 +7,12 @@
   -webkit-touch-callout: none;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--txt);
+  background-color: var(--bg);
 }
 
 .sr-only {
@@ -55,7 +31,7 @@ body {
 /* ============================
    PAINEL DE AÇÕES (FUNDO)
 ============================ */
-.painel-acoes {
+.painel-acoes-tarefas {
   position: absolute;
   top: 0;
   right: 0;
@@ -63,7 +39,7 @@ body {
   height: 100%;
   width: 66%;
 
-  background: linear-gradient(90deg, #ffffff, #eaeaea);
+  background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,13 +59,14 @@ body {
 }
 
 .linha-superior {}
+
 .linha-inferior {}
 
 
 /* ============================
    BOTÕES DE AÇÃO
 ============================ */
-.botao-acao {
+.botao-acao-tarefas {
   position: relative;
   border: none;
   cursor: pointer;
@@ -110,7 +87,7 @@ body {
   display: block;
   opacity: 0;
   visibility: hidden;
-  color: #777;
+  color: var(--gray-777);
 
   position: absolute;
   padding: 4px 8px;
@@ -125,39 +102,35 @@ body {
 }
 
 /* animação suave no ícone do botão desktop */
-.botao-acao-desktop i {
+.botao-acao-desktop-tarefa i {
   transition: transform .25s ease;
 }
 
 /* quando o LI estiver com .mostrar-acoes, gira a setinha */
-.cartao-tarefa.mostrar-acoes .botao-acao-desktop i {
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa i {
   transform: rotate(180deg);
-  color: rgb(255, 255, 255);
+  color: var(--pure-white);
 }
 
-.cartao-tarefa.mostrar-acoes .botao-acao-desktop {
-  background-color: rgb(173, 173, 173);
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa {
+  background-color: var(--gray-ccc);
 }
 
-.botao-acao i {
+.botao-acao-tarefas i {
   font-size: 25px;
-  color: #8e8e8e;
+  color: var(--icon-muted);
 }
 
-.botao-acao i:hover {
-  color: #636363;
+.botao-acao-tarefas i:hover {
+  color: var(--neltra);
 }
 
 /* AÇÃO ABERTA – vale para TODAS as telas */
-.cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
-  transform: translateX(-66%);
-}
-
 
 /* ============================
    ALTERNADOR (TOGGLE)
 ============================ */
-.area-status {
+.tarefa-area-status {
   position: absolute;
   right: 12px;
   bottom: 55px;
@@ -181,7 +154,7 @@ body {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background: #e5e7eb;
+  background: var(--line);
   border-radius: 999px;
   transition: .2s;
 }
@@ -194,17 +167,17 @@ body {
   left: 3px;
   top: 2px;
 
-  background: #ffffff;
+  background: var(--pure-white);
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+  box-shadow: 0 1px 3px var(--thumb-shadow);
   transition: .2s;
 }
 
-.alternador-status input:checked + .alternador-slider {
+.alternador-status input:checked+.alternador-slider {
   background: var(--low);
 }
 
-.alternador-status input:checked + .alternador-slider::before {
+.alternador-status input:checked+.alternador-slider::before {
   transform: translateX(36px);
 }
 
@@ -227,9 +200,9 @@ body {
   width: 100%;
 }
 
-.descricao-tarefa {
+.tarefa-descricao {
   margin: 4px 0 0;
-  color: #777;
+  color: var(--gray-777);
   line-height: 1.4;
   text-align: left;
 }
@@ -238,7 +211,7 @@ body {
 /* ============================
    PAINEL DE INFORMAÇÕES
 ============================ */
-.painel-informacoes {
+.tarefa-painel-informacoes {
   position: absolute;
   top: 8px;
   right: 10px;
@@ -250,7 +223,7 @@ body {
 }
 
 .quant-subtarefas {
-  background: #f3f4f6;
+  background: var(--badge-bg);
   border: 1px solid var(--line);
   padding: 2px 8px;
   border-radius: 999px;
@@ -258,7 +231,7 @@ body {
 }
 
 .etiqueta-id {
-  background: #f3f4f6;
+  background: var(--badge-bg);
   border: 1px solid var(--line);
   padding: 2px 8px;
   border-radius: 999px;
@@ -293,14 +266,14 @@ body {
 /* ============================
    ÁREA PRINCIPAL
 ============================ */
-.area-quadros {
+.area-main {
   width: 100%;
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px 40px;
 }
 
-.quadro {
+.quadro-tarefas {
   background: var(--card);
   border: 1px solid var(--line);
   padding: 16px;
@@ -360,7 +333,7 @@ body {
 }
 
 .cartao-tarefa-link:hover {
-  background-color: var(--cinza-claro);
+  background-color: var(--card-hover);
 }
 
 
@@ -369,22 +342,28 @@ body {
    Layout horizontal completamente alinhado
 ============================================ */
 @media (min-width: 1080px) {
-.botao-acao:hover .legenda-acao {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-22px);
-  /* sobe levemente */
-  transition-delay: 0s;
-  /* remove o atraso ao aparecer */
-}
-  .painel-acoes {
+
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-40%);
+  }
+
+  .botao-acao-tarefas:hover .legenda-acao {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-22px);
+    /* sobe levemente */
+    transition-delay: 0s;
+    /* remove o atraso ao aparecer */
+  }
+
+  .painel-acoes-tarefas {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
     width: 66%;
 
-    background: linear-gradient(90deg, #ffffff, #eaeaea);
+    background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
     padding: 8px 6px;
     z-index: 1;
 
@@ -414,9 +393,9 @@ body {
     margin-right: 50px;
   }
 
-  .botao-acao-desktop {
+  .botao-acao-desktop-tarefa {
     position: absolute;
-    background: #e8e8e8;
+    background: var(--btn-bg);
     border: none;
     padding: 6px 10px;
     border-radius: 6px;
@@ -429,11 +408,11 @@ body {
     top: 20px;
   }
 
-  .botao-acao-desktop:hover {
-    background: #d4d4d4;
+  .botao-acao-desktop-tarefa:hover {
+    background: var(--btn-bg-hover);
   }
 
-  .area-quadros {
+  .area-main {
     width: 100%;
     max-width: 1200px;
     margin: 40px auto;
@@ -463,11 +442,16 @@ body {
   .conteudo-cartao {
     display: grid;
     grid-template-columns:
-      minmax(0, 2fr)   /* título */
-      minmax(0, 1.6fr) /* responsável */
-      180px            /* data */
-      120px            /* toggle (área-status) */
-      190px;           /* painel infos (# e subtarefas) */
+      minmax(0, 2fr)
+      /* título */
+      minmax(0, 1.6fr)
+      /* responsável */
+      180px
+      /* data */
+      120px
+      /* toggle (área-status) */
+      190px;
+    /* painel infos (# e subtarefas) */
 
     align-items: center;
     column-gap: 20px;
@@ -488,11 +472,12 @@ body {
   }
 
   .tarefa-responsavel .rotulo-responsavel {
-    display: none; /* não precisa no desktop */
+    display: none;
+    /* não precisa no desktop */
   }
 
   /* painel de informações ocupa a última coluna */
-  .painel-informacoes {
+  .tarefa-painel-informacoes {
     position: static;
     margin: 0;
     display: flex;
@@ -513,7 +498,7 @@ body {
     justify-content: flex-end;
   }
 
-  .descricao-tarefa {
+  .tarefa-descricao {
     margin: 0;
   }
 
@@ -522,7 +507,7 @@ body {
   }
 
   /* Toggle posicionado no canto, mas fora do fluxo visual */
-  .area-status {
+  .tarefa-area-status {
     position: absolute;
     transform: scale(0.85);
     right: 45px;
@@ -532,7 +517,7 @@ body {
   }
 
   /* Descrição sempre abaixo do grid */
-  .descricao-tarefa {
+  .tarefa-descricao {
     width: 100%;
     padding-left: 4px;
     text-align: left;
@@ -544,11 +529,15 @@ body {
    MOBILE — ATÉ 767px
 ============================================ */
 @media (max-width: 767px) {
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-66%);
+  }
+
   .legenda-acao {
     display: block;
     opacity: 1;
     visibility: visible;
-    color: #777;
+    color: var(--gray-777);
 
     position: absolute;
     padding: 4px 8px;
@@ -559,12 +548,12 @@ body {
     z-index: 9999;
   }
 
-  .area-quadros {
+  .area-main {
     margin-top: 0;
     padding: 0;
   }
 
-  .painel-informacoes {
+  .tarefa-painel-informacoes {
     right: -40px;
     flex-direction: column;
     align-items: flex-end;
@@ -589,11 +578,16 @@ body {
    TABLET — 768px a 1079px
 ============================================ */
 @media (min-width: 768px) and (max-width: 1079px) {
+
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-520px);
+  }
+
   .legenda-acao {
     display: block;
     opacity: 1;
     visibility: visible;
-    color: #777;
+    color: var(--gray-777);
 
     position: absolute;
     padding: 4px 8px;
@@ -603,14 +597,14 @@ body {
     z-index: 9999;
   }
 
-  .painel-acoes {
+  .painel-acoes-tarefas {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
     width: 66%;
 
-    background: linear-gradient(90deg, #ffffff, #eaeaea);
+    background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
     padding: 8px 6px;
     z-index: 1;
 
@@ -645,7 +639,7 @@ body {
     padding: 0 20px 40px;
   }
 
-  .area-status {
+  .tarefa-area-status {
     right: 72px;
     bottom: 2px;
   }
@@ -664,13 +658,13 @@ body {
     margin-right: 72px;
   }
 
-  .botao-acao {
-    margin: 0 15px;
+  .botao-acao-tarefas {
+    margin: 0 7px;
   }
 
-  .botao-acao-desktop {
+  .botao-acao-desktop-tarefa {
     position: absolute;
-    background: #e8e8e8;
+    background: var(--btn-bg);
     border: none;
     width: 60px;
     height: 62px;
@@ -686,7 +680,7 @@ body {
   }
 
   .botao-recolher:hover {
-    background: #d4d4d4;
+    background: var(--btn-bg-hover);
   }
 
   .conteudo-cartao {
@@ -706,7 +700,7 @@ body {
     text-overflow: ellipsis;
   }
 
-  .painel-informacoes {
+  .tarefa-painel-informacoes {
     position: static;
     margin-left: auto;
     flex-direction: row;
@@ -715,7 +709,7 @@ body {
     margin-right: -15px;
   }
 
-  .descricao-tarefa {
+  .tarefa-descricao {
     margin-top: 6px;
     width: 100%;
     padding-left: 4px;
