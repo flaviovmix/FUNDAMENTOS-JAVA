@@ -25,17 +25,11 @@
     <section class="quadro">
       <ul class="lista-tarefas">
 
-        
-
-       
-
-        <li class="cartao-tarefa" data-prioridade="baixa">
-
+        <!-- 1 -->
+        <li class="cartao-tarefa" data-prioridade="baixa" aria-describedby="baixa">
+          <span id="baixa" class="sr-only">Prioridade: baixa</span>
           <div class="cartao-tarefa-wrapper">
-
-            <!-- ÁREA DESLIZÁVEL -->
             <a href="www.google.com" class="cartao-tarefa-link">
-
               <div class="conteudo-cartao">
 
                 <div class="tarefa-titulo">Fundamentos Java 25</div>
@@ -50,15 +44,13 @@
                   Qua. - 12 jan. 2025
                 </div>
 
-                <!-- Informações extras -->
                 <div class="painel-informacoes">
                   <div class="tarefa-detalhes">
-                    <span class="etiqueta quantidade-subtarefas">3 subtarefas</span>
-                    <span class="etiqueta-id quantidade-subtarefas">#1</span>
+                    <span class="quant-subtarefas">3 subtarefas</span>
+                    <span class="etiqueta-id">#1</span>
                   </div>
                 </div>
 
-                <!-- Toggle ON/OFF -->
                 <div class="area-status">
                   <label class="alternador-status">
                     <input type="checkbox" checked>
@@ -71,63 +63,58 @@
               <p class="descricao-tarefa">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               </p>
-
             </a>
 
-            <!-- FUNDO COM BOTÕES (SWIPE) -->
             <div class="painel-acoes">
-
-              <!-- LINHA SUPERIOR -->
               <div class="acoes-tarefa linha-superior">
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
-                  <i class="fa-solid fa-pen-to-square"></i>
+                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()" data-tooltip="Editar tarefa">
+                  <i class="fa-solid fa-eye"></i>
+                  <span class="legenda-acao">exibir</span>
                 </button>
-
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
-                  <i class="fa-solid fa-star"></i>
+                <button class="botao-acao" aria-label="Exibir tarefa" onclick="abrirFuncao()">
+                  <i class="fa-solid fa-pencil"></i>
+                  <span class="legenda-acao">editar</span>
                 </button>
-
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
-                  <i class="fa-solid fa-trash"></i>
+                <button class="botao-acao" aria-label="Deletar tarefa" onclick="abrirFuncao()">
+                  <i class="fa-solid fa-heart"></i>
+                  <span class="legenda-acao">deletar</span>
                 </button>
               </div>
 
-              <!-- LINHA INFERIOR -->
               <div class="acoes-tarefa linha-inferior">
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                <button class="botao-acao" aria-label="Arquivar tarefa" onclick="abrirFuncao()">
                   <i class="fa-solid fa-pen-to-square"></i>
+                  <span class="legenda-acao">arquivar</span>
                 </button>
-
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                <button class="botao-acao" aria-label="Favoritar tarefa" onclick="abrirFuncao()">
                   <i class="fa-solid fa-star"></i>
+                  <span class="legenda-acao">favotirar</span>
                 </button>
-
-                <button class="botao-acao botao-acao" onclick="alert('Clique no botao!')">
+                <button class="botao-acao" aria-label="Ocultar tarefa" onclick="abrirFuncao()">
                   <i class="fa-solid fa-trash"></i>
+                  <span class="legenda-acao">ocultar</span>
                 </button>
               </div>
-
             </div>
 
-            <!-- BOTÃO LIXEIRA (DESKTOP) -->
-            <!-- <button class="botao-lixeira" onclick="excluirTarefa(101)">
-              <a href="lixeira" class="link-lixeira">
-                <i class="fa-solid fa-trash"></i>
-              </a>
-            </button> -->
-
             <button class="botao-acao-desktop">
-            <i class="fa-solid fa-chevron-left fa-sm"></i>
+              <i class="fa-solid fa-chevron-left fa-sm"></i>
             </button>
 
           </div>
-        
+        </li>
+
       </ul>
     </section>
 
   </main>
 
-  <script src="revelarBotoesMobile,js"></script>
+  <script src="revelarBotoesMobile.js"></script>
+  <script>
+    function abrirFuncao() {
+      alert("Função executada!");
+    }
+  </script>
 
 </body>
 

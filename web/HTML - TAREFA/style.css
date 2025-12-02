@@ -1,30 +1,36 @@
 /* ============================
-   LIXEIRA DESKTOP
+   BASE
 ============================ */
-.link-lixeira {
-  all: unset;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
-.botao-lixeira {
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+}
+
+.sr-only {
   position: absolute;
-  right: 7px;
-  bottom: 12px;
-  font-size: 25px;
-  color: #bebebe;
-  background: var(--card);
-  padding: 8px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  z-index: 20;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.botao-lixeira i {
-  pointer-events: none;
-}
 
 /* ============================
    PAINEL DE AÇÕES (FUNDO)
@@ -57,13 +63,14 @@
 }
 
 .linha-superior {}
-
 .linha-inferior {}
+
 
 /* ============================
    BOTÕES DE AÇÃO
 ============================ */
 .botao-acao {
+  position: relative;
   border: none;
   cursor: pointer;
   width: 48px;
@@ -73,8 +80,37 @@
   background: transparent;
 
   display: flex;
+  flex-direction: column;
+  gap: 2px;
   align-items: center;
   justify-content: center;
+}
+
+.legenda-acao {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  color: #777;
+
+  position: absolute;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+
+  transform: translateY(-6px);
+  /* começa um pouquinho acima */
+  transition: opacity .18s ease, transform .18s ease, visibility 0s .18s;
+
+  z-index: 9999;
+}
+
+.botao-acao:hover .legenda-acao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-22px);
+  /* sobe levemente */
+  transition-delay: 0s;
+  /* remove o atraso ao aparecer */
 }
 
 /* animação suave no ícone do botão desktop */
@@ -85,14 +121,15 @@
 /* quando o LI estiver com .mostrar-acoes, gira a setinha */
 .cartao-tarefa.mostrar-acoes .botao-acao-desktop i {
   transform: rotate(180deg);
-  color: red;
+  color: rgb(255, 255, 255);
+}
+
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop {
+  background-color: rgb(173, 173, 173);
 }
 
 .botao-acao i {
   font-size: 25px;
-}
-
-.botao-acao i {
   color: #8e8e8e;
 }
 
@@ -100,10 +137,11 @@
   color: #636363;
 }
 
-/* AÇÃO ABERTA */
+/* AÇÃO ABERTA – vale para TODAS as telas */
 .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
   transform: translateX(-66%);
 }
+
 
 /* ============================
    ALTERNADOR (TOGGLE)
@@ -159,6 +197,7 @@
   transform: translateX(36px);
 }
 
+
 /* ============================
    VARIÁVEIS
 ============================ */
@@ -177,26 +216,6 @@
   --neltra: #636363;
 }
 
-/* ============================
-   BASE
-============================ */
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--txt);
-}
 
 /* ============================
    CONTEÚDO DO CARTÃO
@@ -223,6 +242,7 @@ body {
   text-align: left;
 }
 
+
 /* ============================
    PAINEL DE INFORMAÇÕES
 ============================ */
@@ -237,7 +257,7 @@ body {
   gap: 4px;
 }
 
-.etiqueta {
+.quant-subtarefas {
   background: #f3f4f6;
   border: 1px solid var(--line);
   padding: 2px 8px;
@@ -256,6 +276,7 @@ body {
 .tarefa-detalhes {
   margin-right: 50px;
 }
+
 
 /* ============================
    CORES DAS PRIORIDADES
@@ -276,6 +297,7 @@ body {
   border-left-color: var(--neltra);
 }
 
+
 /* ============================
    ÁREA PRINCIPAL
 ============================ */
@@ -294,6 +316,7 @@ body {
   box-shadow: var(--shadow);
 }
 
+
 /* ============================
    LISTA DE TAREFAS
 ============================ */
@@ -305,6 +328,7 @@ body {
   flex-direction: column;
   gap: 6px;
 }
+
 
 /* ============================
    CARTÃO DE TAREFA (estrutura)
@@ -342,6 +366,7 @@ body {
   z-index: 2;
 }
 
+
 /* ============================================
    DESKTOP — TELA MÉDIA 1080px A 1439px
    Layout horizontal completamente alinhado
@@ -360,8 +385,10 @@ body {
     z-index: 1;
 
     display: flex;
-    flex-direction: row;    /* vira linha horizontal */
-    flex-wrap: nowrap;      /* impede quebrar para baixo */
+    flex-direction: row;
+    /* vira linha horizontal */
+    flex-wrap: nowrap;
+    /* impede quebrar para baixo */
     align-items: center;
     justify-content: right;
   }
@@ -395,7 +422,7 @@ body {
     transition: background 0.2s;
     z-index: 99999;
     right: 8px;
-    top: 17px;
+    top: 20px;
   }
 
   .botao-acao-desktop:hover {
@@ -414,7 +441,7 @@ body {
     width: 70px;
     height: 31px;
     display: inline-block;
-    margin-top: -3px;
+    margin-top: 0px;
     right: 5px;
   }
 
@@ -432,11 +459,11 @@ body {
   .conteudo-cartao {
     display: grid;
     grid-template-columns:
-      minmax(0, 2fr)    /* título */
-      minmax(0, 1.6fr)  /* responsável */
-      180px             /* data */
-      120px             /* toggle (área-status) */
-      190px;            /* painel infos (# e subtarefas) */
+      minmax(0, 2fr)   /* título */
+      minmax(0, 1.6fr) /* responsável */
+      180px            /* data */
+      120px            /* toggle (área-status) */
+      190px;           /* painel infos (# e subtarefas) */
 
     align-items: center;
     column-gap: 20px;
@@ -460,8 +487,7 @@ body {
     display: none; /* não precisa no desktop */
   }
 
-  /* painel de informações ocupa a última coluna,
-     sem margem negativa, não empurra mais a data */
+  /* painel de informações ocupa a última coluna */
   .painel-informacoes {
     position: static;
     margin: 0;
@@ -473,18 +499,18 @@ body {
   }
 
   .tarefa-detalhes {
-      margin: 0;
-      display: flex;
-      width: 200px;
-      margin-right: -101px;
-      gap: 8px;
-      margin-top: 16px;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
+    margin: 0;
+    display: flex;
+    width: 200px;
+    margin-right: -101px;
+    gap: 8px;
+    margin-top: 18px;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
 
   .descricao-tarefa {
-    margin: 0px 0 0;
+    margin: 0;
   }
 
   .cartao-tarefa-link {
@@ -507,14 +533,27 @@ body {
     padding-left: 4px;
     text-align: left;
   }
-
-  /* Swiping trava no desktop */
-  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
-    transform: translateX(0);
-  }
 }
 
+
+/* ============================================
+   MOBILE — ATÉ 767px
+============================================ */
 @media (max-width: 767px) {
+  .legenda-acao {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    color: #777;
+
+    position: absolute;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+
+    transform: translateY(21px);
+    z-index: 9999;
+  }
 
   .area-quadros {
     margin-top: 0;
@@ -539,10 +578,26 @@ body {
   .botao-lixeira {
     display: none;
   }
-
 }
 
+
+/* ============================================
+   TABLET — 768px a 1079px
+============================================ */
 @media (min-width: 768px) and (max-width: 1079px) {
+  .legenda-acao {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    color: #777;
+
+    position: absolute;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transform: translateY(21px);
+    z-index: 9999;
+  }
 
   .painel-acoes {
     position: absolute;
@@ -605,6 +660,10 @@ body {
     margin-right: 72px;
   }
 
+  .botao-acao {
+    margin: 0 15px;
+  }
+
   .botao-acao-desktop {
     position: absolute;
     background: #e8e8e8;
@@ -661,10 +720,4 @@ body {
   .rotulo-responsavel {
     display: none;
   }
-
-  /* override do swipe no desktop/tablet */
-  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
-    transform: translateX(0);
-  }
-
 }
