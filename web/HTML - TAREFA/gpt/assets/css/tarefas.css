@@ -1,0 +1,721 @@
+/* ============================
+   BASE
+============================ */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  background-color: var(--bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ============================
+   PAINEL DE AÇÕES (FUNDO)
+============================ */
+.painel-acoes-tarefas {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: 100%;
+  width: 66%;
+
+  background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+
+  padding: 8px 6px;
+  z-index: 1;
+}
+
+.acoes-tarefa {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+.linha-superior {}
+
+.linha-inferior {}
+
+
+/* ============================
+   BOTÕES DE AÇÃO
+============================ */
+.botao-acao-tarefas {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+
+  border-radius: 999px;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.legenda-acao {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  color: var(--gray-777);
+
+  position: absolute;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+
+  transform: translateY(-6px);
+  /* começa um pouquinho acima */
+  transition: opacity .18s ease, transform .18s ease, visibility 0s .18s;
+
+  z-index: 9999;
+}
+
+/* animação suave no ícone do botão desktop */
+.botao-acao-desktop-tarefa i {
+  transition: transform .25s ease;
+}
+
+/* quando o LI estiver com .mostrar-acoes, gira a setinha */
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa i {
+  transform: rotate(180deg);
+  color: var(--pure-white);
+}
+
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa {
+  background-color: var(--gray-ccc);
+}
+
+.botao-acao-tarefas i {
+  font-size: 25px;
+  color: var(--icon-muted);
+}
+
+.botao-acao-tarefas i:hover {
+  color: var(--neltra);
+}
+
+/* AÇÃO ABERTA – vale para TODAS as telas */
+
+/* ============================
+   ALTERNADOR (TOGGLE)
+============================ */
+.tarefa-area-status {
+  position: absolute;
+  right: 12px;
+  bottom: 55px;
+  z-index: 25;
+}
+
+.alternador-status {
+  position: relative;
+  width: 70px;
+  height: 31px;
+  display: inline-block;
+}
+
+.alternador-status input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.alternador-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--line);
+  border-radius: 999px;
+  transition: .2s;
+}
+
+.alternador-slider::before {
+  content: "";
+  position: absolute;
+  height: 27px;
+  width: 27px;
+  left: 3px;
+  top: 2px;
+
+  background: var(--pure-white);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px var(--thumb-shadow);
+  transition: .2s;
+}
+
+.alternador-status input:checked+.alternador-slider {
+  background: var(--low);
+}
+
+.alternador-status input:checked+.alternador-slider::before {
+  transform: translateX(36px);
+}
+
+
+/* ============================
+   CONTEÚDO DO CARTÃO
+============================ */
+.conteudo-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 22px;
+}
+
+.tarefa-titulo,
+.tarefa-responsavel,
+.tarefa-data {
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.tarefa-descricao {
+  margin: 4px 0 0;
+  color: var(--gray-777);
+  line-height: 1.4;
+  text-align: left;
+}
+
+
+/* ============================
+   PAINEL DE INFORMAÇÕES
+============================ */
+.tarefa-painel-informacoes {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.quant-subtarefas {
+  background: var(--badge-bg);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.etiqueta-id {
+  background: var(--badge-bg);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.tarefa-detalhes {
+  margin-right: 50px;
+}
+
+
+/* ============================
+   CORES DAS PRIORIDADES
+============================ */
+.cartao-tarefa[data-prioridade="baixa"] {
+  border-left-color: var(--low);
+}
+
+.cartao-tarefa[data-prioridade="media"] {
+  border-left-color: var(--med);
+}
+
+.cartao-tarefa[data-prioridade="alta"] {
+  border-left-color: var(--high);
+}
+
+.cartao-tarefa[data-prioridade="neltra"] {
+  border-left-color: var(--neltra);
+}
+
+
+/* ============================
+   ÁREA PRINCIPAL
+============================ */
+.area-main {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+.quadro-tarefas {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+
+/* ============================
+   LISTA DE TAREFAS
+============================ */
+.lista-tarefas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+/* ============================
+   CARTÃO DE TAREFA (estrutura)
+============================ */
+.cartao-tarefa {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  margin: 0 -7px 0 -9px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cartao-tarefa-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.cartao-tarefa-link {
+  flex: 1 0 100%;
+  display: block;
+  width: 100%;
+  background: var(--card);
+  color: inherit;
+  text-decoration: none;
+  padding: 12px 14px;
+  box-shadow: 6px 0 12px rgba(0, 0, 0, 0.10);
+
+  transform: translateX(0);
+  transition: transform .25s ease;
+
+  position: relative;
+  z-index: 2;
+}
+
+.cartao-tarefa-link:hover {
+  background-color: var(--card-hover);
+}
+
+
+/* ============================================
+   DESKTOP — TELA MÉDIA 1080px A 1439px
+   Layout horizontal completamente alinhado
+============================================ */
+@media (min-width: 1080px) {
+
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-40%);
+  }
+
+  .botao-acao-tarefas:hover .legenda-acao {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-22px);
+    /* sobe levemente */
+    transition-delay: 0s;
+    /* remove o atraso ao aparecer */
+  }
+
+  .painel-acoes-tarefas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 66%;
+
+    background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
+    padding: 8px 6px;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    /* vira linha horizontal */
+    flex-wrap: nowrap;
+    /* impede quebrar para baixo */
+    align-items: center;
+    justify-content: right;
+  }
+
+  .acoes-tarefa {
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    gap: 8px;
+  }
+
+  .linha-superior,
+  .linha-inferior {
+    margin: 0;
+    padding: 0;
+  }
+
+  .linha-inferior {
+    margin-right: 50px;
+  }
+
+  .botao-acao-desktop-tarefa {
+    position: absolute;
+    background: var(--btn-bg);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: background 0.2s;
+    z-index: 99999;
+    right: 8px;
+    top: 20px;
+  }
+
+  .botao-acao-desktop-tarefa:hover {
+    background: var(--btn-bg-hover);
+  }
+
+  .area-main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+  }
+
+  .alternador-status {
+    position: absolute;
+    width: 70px;
+    height: 31px;
+    display: inline-block;
+    margin-top: 0px;
+    right: 5px;
+  }
+
+  .botao-lixeira {
+    bottom: 8px;
+    right: 42px;
+  }
+
+  /* Espaço entre cartões */
+  .lista-tarefas {
+    gap: 0px;
+  }
+
+  /* grid principal com larguras fixas para estabilizar a data */
+  .conteudo-cartao {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 2fr)
+      /* título */
+      minmax(0, 1.6fr)
+      /* responsável */
+      180px
+      /* data */
+      120px
+      /* toggle (área-status) */
+      190px;
+    /* painel infos (# e subtarefas) */
+
+    align-items: center;
+    column-gap: 20px;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .tarefa-titulo,
+  .tarefa-responsavel,
+  .tarefa-data {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tarefa-data {
+    text-align: left;
+  }
+
+  .tarefa-responsavel .rotulo-responsavel {
+    display: none;
+    /* não precisa no desktop */
+  }
+
+  /* painel de informações ocupa a última coluna */
+  .tarefa-painel-informacoes {
+    position: static;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-self: end;
+  }
+
+  .tarefa-detalhes {
+    margin: 0;
+    display: flex;
+    width: 200px;
+    margin-right: -101px;
+    gap: 8px;
+    margin-top: 18px;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .tarefa-descricao {
+    margin: 0;
+  }
+
+  .cartao-tarefa-link {
+    padding: 4px 8px;
+  }
+
+  /* Toggle posicionado no canto, mas fora do fluxo visual */
+  .tarefa-area-status {
+    position: absolute;
+    transform: scale(0.85);
+    right: 45px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Descrição sempre abaixo do grid */
+  .tarefa-descricao {
+    width: 100%;
+    padding-left: 4px;
+    text-align: left;
+  }
+}
+
+
+/* ============================================
+   MOBILE — ATÉ 767px
+============================================ */
+@media (max-width: 767px) {
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-66%);
+  }
+
+  .legenda-acao {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    color: var(--gray-777);
+
+    position: absolute;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+
+    transform: translateY(21px);
+    z-index: 9999;
+  }
+
+  .area-main {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .tarefa-painel-informacoes {
+    right: -40px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .tarefa-titulo {
+    font-size: 1.25rem;
+    margin-top: -25px;
+  }
+
+  .rotulo-responsavel {
+    display: inline;
+  }
+
+  .botao-lixeira {
+    display: none;
+  }
+}
+
+
+/* ============================================
+   TABLET — 768px a 1079px
+============================================ */
+@media (min-width: 768px) and (max-width: 1079px) {
+
+  .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-520px);
+  }
+
+  .legenda-acao {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    color: var(--gray-777);
+
+    position: absolute;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transform: translateY(21px);
+    z-index: 9999;
+  }
+
+  .painel-acoes-tarefas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 66%;
+
+    background: linear-gradient(90deg, var(--surface-strong), var(--panel-gradient-end));
+    padding: 8px 6px;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: right;
+  }
+
+  .acoes-tarefa {
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    gap: 8px;
+  }
+
+  .linha-superior,
+  .linha-inferior {
+    margin: 0;
+    padding: 0;
+  }
+
+  .linha-inferior {
+    margin-right: 75px;
+  }
+
+  .area-quadros {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+  }
+
+  .tarefa-area-status {
+    right: 72px;
+    bottom: 2px;
+  }
+
+  .etiqueta-id {
+    position: absolute;
+    right: 150px;
+    top: 44px;
+  }
+
+  .botao-lixeira {
+    right: 37px;
+  }
+
+  .tarefa-detalhes {
+    margin-right: 72px;
+  }
+
+  .botao-acao-tarefas {
+    margin: 0 7px;
+  }
+
+  .botao-acao-desktop-tarefa {
+    position: absolute;
+    background: var(--btn-bg);
+    border: none;
+    width: 60px;
+    height: 62px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: background 0.2s;
+    z-index: 99999;
+    right: 4px;
+    top: 4px;
+  }
+
+  .botao-recolher:hover {
+    background: var(--btn-bg-hover);
+  }
+
+  .conteudo-cartao {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .tarefa-titulo,
+  .tarefa-responsavel,
+  .tarefa-data {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tarefa-painel-informacoes {
+    position: static;
+    margin-left: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-right: -15px;
+  }
+
+  .tarefa-descricao {
+    margin-top: 6px;
+    width: 100%;
+    padding-left: 4px;
+  }
+
+  .rotulo-responsavel {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+:root {
+  /* escala neutra pedida */
+  /* escala neutra */
+  --gray-222: #e5e5e5;
+  --gray-777: #c7c7c7;
+  --gray-ccc: #8a8a8a;
+
+  /* básicos */
+  --pure-white: #ffffff; /* continua branco absoluto */
+  --black: #000000;
+
+  /* superfícies */
+  --bg: #0f1115;               /* fundo geral */
+  --card: #181b21;             /* cartão base */
+  --surface-strong: #1e2229;   /* substitui o antigo branco */
+
+  /* texto */
+  --txt: #f2f4f8;
+  --muted: #9aa0a8;
+  --line: #2a2f37;
+
+  /* elementos UI */
+  --badge-bg: #23272f;
+  --btn-bg: #262b33;
+  --btn-bg-hover: #303641;
+  --card-hover: #20242c;
+  --icon-muted: #b4b9c2;
+
+  /* gradientes */
+  --panel-gradient-end: #282d36;
+
+  /* prioridades (não alterei: funcionam bem no escuro) */
+  --low: #339af0;
+  --med: #f5a623;
+  --high: #ff5f56;
+  --neltra: #c2c2c2;
+
+  /* sombras */
+  --shadow:
+    0 6px 24px rgba(0, 0, 0, .45),
+    0 2px 6px rgba(0, 0, 0, .35);
+}
