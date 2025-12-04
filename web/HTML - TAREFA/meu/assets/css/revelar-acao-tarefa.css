@@ -1,0 +1,18 @@
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa i {
+    transform: rotate(180deg);
+    color: var(--pure-white);
+}
+
+.cartao-tarefa.mostrar-acoes .botao-acao-desktop-tarefa {
+    background-color: var(--gray-ccc);
+}
+
+.cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+    transform: translateX(-66%);
+}
+
+@media (min-width: 755px) {
+    .cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+        transform: translateX(-420px);
+    }
+}

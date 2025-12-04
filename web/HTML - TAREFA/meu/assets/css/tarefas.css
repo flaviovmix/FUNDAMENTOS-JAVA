@@ -1,45 +1,16 @@
-:root {
-  /* escala neutra pedida */
-  --gray-222: #222222;
-  --gray-777: #777777;
-  --gray-ccc: #cccccc;
+/* ============================
+   VARIAVEIS
+============================ */
 
-  /* básicos */
-  --pure-white: #ffffff;
-  --black: #000000;
 
-  /* tema geral */
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --txt: #1e1f24;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --shadow:
-    0 6px 24px rgba(16, 24, 40, .06),
-    0 2px 6px rgba(16, 24, 40, .04);
-
-  /* prioridades */
-  --low: #3498db;
-  --med: #f39c12;
-  --high: #e74c3c;
-  --neltra: #636363;
-
-  /* neutros específicos da UI */
-  --panel-gradient-end: #eaeaea;
-  --badge-bg: #f3f4f6;
-  --btn-bg: #e8e8e8;
-  --btn-bg-hover: #d4d4d4;
-  --card-hover: #efefef;
-  --icon-muted: #8e8e8e;
-  --thumb-shadow: rgba(0, 0, 0, .25);
-
-  /* cartao */
-  --borda-card: 12px;
-}
 
 /* ============================
    EXTERNO
 ============================ */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -49,33 +20,41 @@ body {
   margin: 0;
   padding: 0;
   color: var(--txt);
-  background-color: var(--bg);
+  background-color: var(--bg-pagina);
 }
 
 .area-main {
   width: 100%;
   max-width: 900px;
-   margin: 0 auto;
+  margin: 0 auto;
 }
 
 
 /* ============================
    CARTÃO DE TAREFA (extrutura)
 ============================ */
+.tarefa {
+  position: relative;
+  list-style: none;
+}
+
 .cartao-tarefa {
+  position: relative;
   font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   margin: 10px;
   background: var(--card);
-  border-left: 6px solid var(--med);
+  border-left: 6px solid var(--laranja);
   border-radius: var(--borda-card);
   box-shadow: var(--shadow);
   list-style-type: none;
+  overflow: hidden;
 }
 
 .cartao-tarefa-wrapper {
   border-radius: var(--borda-card);
   display: flex;
   width: 100%;
+  z-index: 2;
 }
 
 
@@ -83,7 +62,6 @@ body {
    CARTÃO DE TAREFA (link)
 ============================ */
 .cartao-tarefa-link {
-  position: relative;
   width: 100%;
   color: inherit;
   text-decoration: none;
@@ -92,6 +70,9 @@ body {
   border-radius: var(--borda-card);
   transform: translateX(0);
   transition: transform .25s ease;
+
+  position: relative;
+  z-index: 5;
 
   background: var(--card);
 }
@@ -109,13 +90,22 @@ body {
   width: 100%;
 }
 
+.etiqueta {
+  padding: 3px 10px 4px 10px;
+  background-color: var(--bg-etiquetas);
+  color: var(--txt-claro);
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+}
+
 .tarefa-titulo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.area-titulo-responsavel {
+  width: 100%;
 }
 
 .rotulo-responsavel {
@@ -124,7 +114,7 @@ body {
 
 .tarefa-area-status {
   position: absolute;
-  right: 12px;
+  right: 15px;
   top: 60px;
   z-index: 25;
 }
@@ -133,89 +123,117 @@ body {
   margin-top: 12px;
 }
 
-
-
 /* ============================
    APARENCIA CHECKBOX
 ============================ */
-.alternador-status {
-  position: relative;
-  width: 70px;
-  height: 31px;
-  display: inline-block;
-}
-
-.alternador-status input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.alternador-slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background: var(--line);
-  border-radius: 999px;
-  transition: .2s;
-}
-
-.alternador-slider::before {
-  content: "";
-  position: absolute;
-  height: 27px;
-  width: 27px;
-  left: 3px;
-  top: 2px;
-
-  background: var(--pure-white);
-  border-radius: 50%;
-  box-shadow: 0 1px 3px var(--thumb-shadow);
-  transition: .2s;
-}
 
 
-.etiqueta-status {
-  background: var(--badge-bg);
-  border: 1px solid var(--line);
-  padding: 5px 25px;
-  border-radius: 999px;
-  font-size: .8rem;
-}
+
+
+
+
+
+
+
 
 .divisao-tarefa-data {
   margin: 0 5px;
 }
 
-.quant-subtarefas {
-  background: var(--badge-bg);
-  border: 1px solid var(--line);
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 12px;
+.botao-acao-tarefa {
+  display: block;
+  position: absolute;
+  padding: 10px 14px;
+  border: 2px solid #8e8e8e;
+  border-radius: 50%;
+  cursor: pointer;
+  right: 3px;
+  top: 3px;
+  z-index: 6;
 }
 
-/* =========================================================
-   BREAKPOINTS PARA O LAYOUT DE TAREFAS
-   Mobile-first (min-width)
-========================================================= */
+.etiqueta-status {
+  position: absolute;
+  right: 50px;
+}
+
+.cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+  transform: translateX(-40%); /* CASO QUEIRA PADRÃO FIXO */
+}
+
+/* =============================
+PRIMEIRA QUEBRA
+============================= */
+@media (min-width: 755px) {
+  .conteudo-cartao {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .etiqueta-status {
+    right: 15px;
+  }
+
+  .area-titulo-responsavel {
+    width: 48%;
+  }
+
+  .tarefa-titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 70%;
+  }
+
+  .botao-acao-tarefa {
+    padding: 5px 8px;
+    top: 35px;
+    right: 0px;
+  }
+
+  .area-main {
+    width: 96%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .painel-acoes-tarefas {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding-right: 25px;
+    z-index: 1;
+
+  }
+}
 
 
 /* =============================
-   1) Celulares pequenos
-   (a partir de 480px)
+SEGUNDA QUEBRA
 ============================= */
-@media (min-width: 480px) {
-  /* ajustes leves do cartão, gaps, paddings */
-}
+@media (min-width: 900px) {
+  .area-titulo-responsavel {
+    display: flex;
+    align-items: center;
+    width: 55%;
+  }
 
+  .rotulo-responsavel {
+    display: none;
+  }
 
-/* =============================
-   2) Celulares maiores
-   (a partir de 600px)
-============================= */
-@media (min-width: 600px) {
-  /* fonte um pouco maior, badges alinhados melhor */
+  .tarefa-titulo {
+    width: 50%;
+  }
+
+  .tarefa-area-status {
+    top: 45px;
+  }
+
+  .botao-acao-tarefa {
+    top: 25px;
+  }
 }
 
 
