@@ -109,11 +109,28 @@ body {
   width: 100%;
 }
 
+.tarefa-titulo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.rotulo-responsavel {
+  font-weight: 600;
+}
+
 .tarefa-area-status {
   position: absolute;
   right: 12px;
-  bottom: 55px;
+  top: 60px;
   z-index: 25;
+}
+
+.tarefa-descricao {
+  margin-top: 12px;
 }
 
 
@@ -158,12 +175,16 @@ body {
 }
 
 
-.etiqueta-id {
+.etiqueta-status {
   background: var(--badge-bg);
   border: 1px solid var(--line);
-  padding: 2px 8px;
+  padding: 5px 25px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: .8rem;
+}
+
+.divisao-tarefa-data {
+  margin: 0 5px;
 }
 
 .quant-subtarefas {
@@ -174,12 +195,70 @@ body {
   font-size: 12px;
 }
 
+/* =========================================================
+   BREAKPOINTS PARA O LAYOUT DE TAREFAS
+   Mobile-first (min-width)
+========================================================= */
+
+
 /* =============================
-   4) Tablets em modo retrato
-   (601px a 768px)
+   1) Celulares pequenos
+   (a partir de 480px)
+============================= */
+@media (min-width: 480px) {
+  /* ajustes leves do cartão, gaps, paddings */
+}
+
+
+/* =============================
+   2) Celulares maiores
+   (a partir de 600px)
+============================= */
+@media (min-width: 600px) {
+  /* fonte um pouco maior, badges alinhados melhor */
+}
+
+
+/* =============================
+   3) Tablets em retrato
+   (a partir de 768px)
 ============================= */
 @media (min-width: 768px) {
-  .cartao-tarefa {
-    display: none;
-  }
+  /* cartão mais largo, área-main centralizada, espaçamentos maiores */
+}
+
+
+/* =============================
+   4) Tablets paisagem / Desktop pequeno
+   (a partir de 1024px)
+============================= */
+@media (min-width: 1024px) {
+  /* reorganização mais sofisticada, elementos lado a lado */
+}
+
+
+/* =============================
+   5) Notebooks
+   (a partir de 1280px)
+============================= */
+@media (min-width: 1280px) {
+  /* cartão com largura fixa, texto mais confortável */
+}
+
+
+/* =============================
+   6) Telas grandes
+   (a partir de 1536px)
+============================= */
+@media (min-width: 1536px) {
+  /* aumentar larguras máximas, tipografia maior */
+}
+
+
+/* =============================
+   7) Full HD / 4K
+   (a partir de 1920px)
+============================= */
+@media (min-width: 1920px) {
+  /* layout mais espaçado, cards mais largos */
 }
